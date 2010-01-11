@@ -4,6 +4,130 @@ body {
    font-size:12px;
    margin:0;
 }
+#config_wrapper {
+   width:530px;
+   float:left;
+   border:1px solid #CBCBCB;
+}
+#config_wrapper input[type="text"],select,textarea {
+   font-size:14px;
+   font-style:italic;
+   color:#403F3F;
+}
+#config_wrapper input[type="button"] {
+   font-size:14px;
+   font-weight:bold;
+}
+.open_settings img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.close_settings img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.add_global img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.remove_global img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.edit_global img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.content_fieldset {
+   display:none;
+   width:90%;
+   margin-top:10px;
+   margin-left:10px;
+   text-transform:capitalize;
+   font-weight:600;
+}
+.tochoose {
+   /*display:none;*/
+   margin-top:10px;
+   margin-left:10px;
+   text-transform:capitalize;
+   font-weight:600;
+}
+.simple_block,.simple_block_style {
+   margin-top:10px;
+   margin-left:10px;
+   text-transform:capitalize;
+   font-weight:600;
+}
+.title_bar {
+   background-color:#E9E8E8;
+   width:97%;
+   clear:both;
+   height:26px;
+   margin-left:10px;
+   margin-top:2px;
+}
+.title_bar_text {
+   float:left;
+   font-size:16px;
+   font-style:normal;
+   font-weight:bold;
+   margin-left:5px;
+   margin-top:3px;
+   text-transform:capitalize;
+}
+.title_bar_display_content {
+   float:right;
+}
+.settings {
+   display:none;
+}
+.settings_menu {
+   /*display:none;*/
+   width:90%;
+   margin:2px 0 2px 20px;
+   font-size:14px;
+   font-style:normal;
+   font-weight:bold;
+   text-transform:capitalize;
+}
+.global_config {
+   display:none;
+   width:90%;
+   margin:2px 0 2px 20px;
+   font-size:12px;
+   font-style:normal;
+   font-weight:bold;
+   text-transform:capitalize;
+}
+.item_set {
+   margin:2px 0 2px 20px;
+}
+.identification_buttons {
+   margin:2px 0 2px 20px;
+}
+.content_buttons {
+   margin:2px 0 2px 20px;
+}
+div[class^=tochoose] {
+   display:none;
+}
+#block-tools {
+   margin-top:2px;
+   margin-left:0;
+}
+/*
+body {
+   clear:both;
+   font-family:Trebuchet MS;
+   font-size:12px;
+   margin:0;
+}
 .template {
    display:none;
 }
@@ -120,3 +244,4 @@ body {
 #elements_config,#tools_config,#layout_config,#qgrouping_config,#qdeps_config,#list_setting {
    display:none;
 }
+*/
