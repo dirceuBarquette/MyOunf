@@ -4,35 +4,6 @@ body {
    font-size:12px;
    margin:0;
 }
-.template {
-   display:none;
-}
-.close_settings img{
-   width:12px;
-   height:12px;
-   cursor:pointer;
-}
-.open_settings img{
-   width:12px;
-   height:12px;
-   cursor:pointer;
-}
-.edit_settings img{
-   width:12px;
-   height:12px;
-   cursor:pointer;
-}
-.view img{
-   width:17px;
-   height:12px;
-   cursor:pointer;
-}
-.tochoose,.tochoose_unique {
-   display:none;
-}
-.chosen_form {
-   display:block;
-}
 #config_wrapper {
    width:530px;
    float:left;
@@ -47,30 +18,51 @@ body {
    font-size:14px;
    font-weight:bold;
 }
-.group_config,.group_config_sub {
-   margin-bottom:5px;
+.open_settings img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
 }
-.group_config_sub {
-
+.close_settings img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
 }
-.settings,.settings_sub,.entry_setting,.option_setting,.list_setting,.tools_option_setting {
+.add_global img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.remove_global img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.edit_global img{
+   width:12px;
+   height:12px;
+   cursor:pointer;
+}
+.content_fieldset {
+   display:none;
+   width:90%;
+   margin-top:10px;
+   margin-left:10px;
+   text-transform:capitalize;
+   font-weight:600;
+}
+.tochoose {
    display:none;
    margin-top:10px;
    margin-left:10px;
    text-transform:capitalize;
    font-weight:600;
 }
-.item_set {
-   padding-bottom:5px;
-}
-#new_element {
-   cursor:pointer;
-}
-#remove_element {
-   cursor:pointer;
-}
-.settings_form {
-   display:none;
+.simple_block,.simple_block_style {
+   margin-top:10px;
+   margin-left:10px;
+   text-transform:capitalize;
+   font-weight:600;
 }
 .title_bar {
    background-color:#E9E8E8;
@@ -89,34 +81,43 @@ body {
    margin-top:3px;
    text-transform:capitalize;
 }
-.title_bar_sub {
-   background-color:#E9E8E8;
-   width:97%;
-   clear:both;
-   height:20px;
-   margin-left:10px;
-}
-.main_title_bar {
-   margin-left:2px;
-   width:99%;
-}
-.title_bar_text_sub {
-   float:left;
-   font-size:14px;
-   font-style:normal;
-   font-weight:bold;
-   margin-left:5px;
-   text-transform:capitalize;
-}
-.main_title_bar_text {
-
-}
 .title_bar_display_content {
    float:right;
 }
-#new_quiz {
-   cursor:pointer;
-}
-#elements_config,#tools_config,#layout_config,#qgrouping_config,#qdeps_config,#list_setting {
+.settings {
    display:none;
+}
+.settings_menu {
+   /*display:none;*/
+   width:90%;
+   margin:2px 0 2px 20px;
+   font-size:14px;
+   font-style:normal;
+   font-weight:bold;
+   text-transform:capitalize;
+}
+.global_config {
+   display:none;
+   width:90%;
+   margin:2px 0 2px 20px;
+   font-size:12px;
+   font-style:normal;
+   font-weight:bold;
+   text-transform:capitalize;
+}
+.item_set {
+   margin:2px 0 2px 20px;
+}
+.identification_buttons {
+   margin:2px 0 2px 20px;
+}
+.content_buttons {
+   margin:2px 0 2px 20px;
+}
+div[class^=tochoose] {
+   display:none;
+}
+#block-tools {
+   margin-top:2px;
+   margin-left:0;
 }
