@@ -105,9 +105,7 @@
       </div>
    </div>
    <div id="settings-el_type" class="settings">
-      
-   </div>
-</div><div class="item_set">
+      <div class="item_set">
    <label><span class="lang-">html</span></label>
    <input type="radio" value="html" name="element_type" class="choose_form" />
 </div>
@@ -237,7 +235,16 @@
    <input type="radio" value="fill_standardized" name="entries_content" class="choose_form" />
 </div>
 <div class="tochoose-entries_content" id="choose_form-entries_content-fill_free">
-   <div id="block-entries_content-fill_free-rules" class="simple_block ">
+   <div id="block-fill_free" class="simple_block ">
+   <div class="title_bar">
+      <div class="title_bar_text">livre</div>
+      <div class="title_bar_display_content">
+         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+      </div>
+   </div>
+   <div id="settings-fill_free" class="settings">
+      <div id="block-entries_content-fill_free-rules" class="simple_block ">
    <div class="title_bar">
       <div class="title_bar_text">regras</div>
       <div class="title_bar_display_content">
@@ -283,6 +290,8 @@
 
    </div>
 </div>
+   </div>
+</div>
 </div><div class="tochoose-entries_content" id="choose_form-entries_content-fill_standardized">
    <div id="block-fill_standardized" class="simple_block ">
    <div class="title_bar">
@@ -293,7 +302,7 @@
       </div>
    </div>
    <div id="settings-fill_standardized" class="settings">
-      <div id="block-fill_standardized-options" class="simple_block ">
+      <div id="block-entries_options" class="block simple_block_style">
    <div class="title_bar">
       <div class="title_bar_text">op&ccedil;&otilde;es</div>
       <div class="title_bar_display_content">
@@ -301,8 +310,95 @@
          <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
       </div>
    </div>
-   <div id="settings-fill_standardized-options" class="settings">
-      
+   <div id="settings-entries_options" class="settings">
+      <div class="settings_menu">
+         <label for="block_list-entries_options"><span class="lang-ids">op&ccedil;&atilde;o</span></label>
+         <select id="block_list-entries_options" name="block_list-entries_options" class="block_options_combo">
+            <option value=""></option>
+         </select>
+         <span class="add_global">
+            <img src="./imgs/maiss2.jpg" title="adicionar op&ccedil;&atilde;o" alt="adicionar" />
+         </span>
+         <span class="remove_global">
+            <img src="./imgs/menoss.jpg" title="remover op&ccedil;&atilde;o" alt="remover" />
+         </span>
+         <span class="edit_global">
+            <img src="./imgs/lapis.jpg" title="editar op&ccedil;&atilde;o" alt="editar" />
+         </span>
+      </div>
+      <fieldset class="global_config">
+         <div class="item_set">
+   <label><span class="lang-">nova</span></label>
+   <input type="radio" value="entries_new_option" name="entries_options" class="choose_form" />
+</div>
+<div class="item_set">
+   <label><span class="lang-">a partir de outra lista</span></label>
+   <input type="radio" value="entries_from_lists" name="entries_options" class="choose_form" />
+</div>
+<div class="item_set">
+   <label><span class="lang-">a partir do formato csv</span></label>
+   <input type="radio" value="entries_from_csv" name="entries_options" class="choose_form" />
+</div>
+<div class="tochoose-entries_options" id="choose_form-entries_options-entries_new_option">
+   <div id="block-entries_options-entries_new_option" class="simple_block ">
+   <div class="title_bar">
+      <div class="title_bar_text">nova</div>
+      <div class="title_bar_display_content">
+         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+      </div>
+   </div>
+   <div id="settings-entries_options-entries_new_option" class="settings">
+      <div class="item_set">
+   <label for="label"><span class="lang-">etiqueta</span></label>
+   <input type="text" name="label" id="label" value="" />
+</div><div class="item_set">
+   <label for="value"><span class="lang-">valor</span></label>
+   <input type="text" name="value" id="value" value="" />
+</div>
+   </div>
+</div>
+</div><div class="tochoose-entries_options" id="choose_form-entries_options-entries_from_lists">
+   <div id="block-entries_options-entries_from_lists" class="simple_block ">
+   <div class="title_bar">
+      <div class="title_bar_text">a partir de outra lista</div>
+      <div class="title_bar_display_content">
+         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+      </div>
+   </div>
+   <div id="settings-entries_options-entries_from_lists" class="settings">
+      <div class="item_set">
+   <label><span class="lang-">listas</span></label>
+   <select name="entries_lists_available" id="entries_lists_available">
+      <option value=""></option>
+   </select>
+</div>
+   </div>
+</div>
+</div><div class="tochoose-entries_options" id="choose_form-entries_options-entries_from_csv">
+   <div id="block-entries_options-entries_from_csv" class="simple_block ">
+   <div class="title_bar">
+      <div class="title_bar_text">a partir do formato csv</div>
+      <div class="title_bar_display_content">
+         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+      </div>
+   </div>
+   <div id="settings-entries_options-entries_from_csv" class="settings">
+      <div class="item_set">
+   <label for="entries_options-entries_from_csv-text"><span class="lang-">texto</span></label>
+   <textarea name="entries_options-entries_from_csv-text" id="entries_options-entries_from_csv-text" cols="25" rows="4"></textarea>
+</div>
+
+   </div>
+</div>
+</div><div class="content_buttons">
+   <input type="button" id="set_content_options-entries_option" class="adding_content_options" value="ok" />
+   <input type="button" id="cancel_content_options-entries_option" class="cancel_content_options" value="cancelar" />
+</div>
+      </fieldset>
+
    </div>
 </div><div id="block-fill_standardized-rules" class="simple_block ">
    <div class="title_bar">
@@ -379,6 +475,8 @@
 </div>
 </div><div class="content_buttons">
    <input type="button" id="set_content-elements" class="adding_content" value="ok" />
+</div>
+   </div>
 </div>
       </fieldset>
    </div>
@@ -464,8 +562,8 @@
    <input type="radio" value="from_lists" name="lists_options" class="choose_form" />
 </div>
 <div class="item_set">
-   <label><span class="lang-">importar</span></label>
-   <input type="radio" value="from_db" name="lists_options" class="choose_form" />
+   <label><span class="lang-">a partir do formato csv</span></label>
+   <input type="radio" value="from_csv" name="lists_options" class="choose_form" />
 </div>
 <div class="tochoose-lists_options" id="choose_form-lists_options-new_option">
    <div id="block-lists_options-new" class="simple_block ">
@@ -504,29 +602,21 @@
 </div>
    </div>
 </div>
-</div><div class="tochoose-lists_options" id="choose_form-lists_options-from_db">
-   <div id="block-lists_options-from_db" class="simple_block ">
+</div><div class="tochoose-lists_options" id="choose_form-lists_options-from_csv">
+   <div id="block-lists_options-from_csv" class="simple_block ">
    <div class="title_bar">
-      <div class="title_bar_text">importar</div>
+      <div class="title_bar_text">a partir do formato csv</div>
       <div class="title_bar_display_content">
          <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
          <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
       </div>
    </div>
-   <div id="settings-lists_options-from_db" class="settings">
+   <div id="settings-lists_options-from_csv" class="settings">
       <div class="item_set">
-   <label for="lists_options-from_db-table_name"><span class="lang-">nome da tabela no bd</span></label>
-   <input type="text" name="lists_options-from_db-table_name" id="lists_options-from_db-table_name" value="" />
-</div><div class="item_set">
-   <label for="lists_options-from_db-field_name_for_label"><span class="lang-">campo da tabela - etiqueta</span></label>
-   <input type="text" name="lists_options-from_db-field_name_for_label" id="lists_options-from_db-field_name_for_label" value="" />
-</div><div class="item_set">
-   <label for="lists_options-from_db-field_name_for_value"><span class="lang-">campo da tabela - valor</span></label>
-   <input type="text" name="lists_options-from_db-field_name_for_value" id="lists_options-from_db-field_name_for_value" value="" />
-</div><div class="item_set">
-   <label for="lists_options-from_db-filtered_by"><span class="lang-">filtrar por</span></label>
-   <input type="text" name="lists_options-from_db-filtered_by" id="lists_options-from_db-filtered_by" value="" />
+   <label for="lists_options-from_csv-text"><span class="lang-">texto</span></label>
+   <textarea name="lists_options-from_csv-text" id="lists_options-from_csv-text" cols="25" rows="4"></textarea>
 </div>
+
    </div>
 </div>
 </div><div class="content_buttons">
