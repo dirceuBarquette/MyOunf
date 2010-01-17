@@ -3,6 +3,7 @@ body {
    font-family:Trebuchet MS;
    font-size:12px;
    margin:0;
+   color:#282ea7;
 }
 #config_wrapper {
    width:530px;
@@ -17,6 +18,7 @@ body {
 #config_wrapper input[type="button"] {
    font-size:14px;
    font-weight:bold;
+   color:#282ea7;
 }
 .open_settings img{
    width:12px;
@@ -49,7 +51,7 @@ body {
    margin-top:10px;
    margin-left:10px;
    text-transform:capitalize;
-   font-weight:600;
+   /*font-weight:600;*/
 }
 .tochoose {
    display:none;
@@ -62,7 +64,7 @@ body {
    margin-top:10px;
    margin-left:10px;
    text-transform:capitalize;
-   font-weight:600;
+   /*font-weight:600;*/
 }
 .title_bar {
    background-color:#E9E8E8;
@@ -71,12 +73,13 @@ body {
    height:26px;
    margin-left:10px;
    margin-top:2px;
+   border: 1px solid #D6D5D5;
 }
 .title_bar_text {
    float:left;
    font-size:16px;
    font-style:normal;
-   font-weight:bold;
+   /*font-weight:bold;*/
    margin-left:5px;
    margin-top:3px;
    text-transform:capitalize;
@@ -93,7 +96,7 @@ body {
    margin:2px 0 2px 20px;
    font-size:14px;
    font-style:normal;
-   font-weight:bold;
+   /*font-weight:bold;*/
    text-transform:capitalize;
 }
 .global_config {
@@ -102,7 +105,7 @@ body {
    margin:2px 0 2px 20px;
    font-size:12px;
    font-style:normal;
-   font-weight:bold;
+   /*font-weight:bold;*/
    text-transform:capitalize;
 }
 .item_set {

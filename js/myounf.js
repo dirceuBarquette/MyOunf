@@ -187,12 +187,11 @@ var MyOunf = {
 					str = $('input[name=entries_options]:checked').val();
 					block2set = 'entries_options';
 				}
-				//var str = this.id == 'set_content_options-option' ? $('input[name=lists_options]:checked').val() : $('input[name=entries_options]:checked').val();
 			switch (str) {
 				case 'new_option' :
 					conf = {label:'',value:''};
-					conf.label = $('#label').val();
-					conf.value = $('#value').val();
+					conf.label = $('#lists_options_label').val();
+					conf.value = $('#lists_options_value').val();
 					MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options.push(conf);
 				break;
 				case 'from_lists' :
@@ -202,13 +201,11 @@ var MyOunf = {
 						conf.value = v.value;
 						MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options.push(conf);
 					});
-					//conf = MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[$('#lists_available').val()].options;
 				break;''
 				case 'from_csv' :
 					var w_text = $('#lists_options-from_csv-text').val().split("\n");
 					$.each(w_text,function(k,v){
 						var ln = v.split('";"');
-						//console.log('ln->',ln);
 						conf = {label:'',value:''};
 						conf.label = ln[0].substr(1);
 						conf.value = ln[1].substr(0,ln[1].length -1);
@@ -228,13 +225,11 @@ var MyOunf = {
 						conf.value = v.value;
 						MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options.push(conf);
 					});
-					//conf = MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[$('#lists_available').val()].options;
 				break;''
 				case 'entries_from_csv' :
 					var w_text = $('#entries_options-entries_from_csv-text').val().split("\n");
 					$.each(w_text,function(k,v){
 						var ln = v.split('";"');
-						//console.log('ln->',ln);
 						conf = {label:'',value:''};
 						conf.label = ln[0].substr(1);
 						conf.value = ln[1].substr(0,ln[1].length -1);
