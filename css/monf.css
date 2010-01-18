@@ -10,6 +10,12 @@ body {
    float:left;
    border:1px solid #CBCBCB;
 }
+#quiz_wrapper {
+   float:left;
+   width:400px;
+   height:500px;
+   overflow:auto;
+}
 #config_wrapper input[type="text"],select,textarea {
    font-size:14px;
    font-style:italic;
@@ -123,4 +129,35 @@ div[class^=tochoose] {
 #block-tools {
    margin-top:2px;
    margin-left:0;
+}
+/*myounf quiz*/
+.myounf-quiz_area {
+   display:block;
+   position:relative;
+   top:0;
+   left:0;
+   border:1px solid #D6D5D5;
+   width:98%;
+   min-height:498px;
+}
+#myounf-quiz_title {
+
+}
+.myounf-element_area {
+   display:block;
+   border:1px solid #D6D5D5;
+   width:100%;
+   min-height:30px;
+}
+.myounf-entries_area {
+
+}
+.myounf-entry_area {
+   display:block;
+   border:1px solid #D6D5D5;
+   width:30px;
+   height:15px;
+}
+.el_type_html_content_text {
+
 }

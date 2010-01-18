@@ -4,48 +4,18 @@ var MyOunf = {
 
 	//templates
 	quiz_template : {quiz_id:'',quiz_name:'',elements:[],lists:[]},
-	elements_template : {elements_id:'',elements_name:'',element_type:'',question_num:'',question_text:'','el_type-html-content-text':'',entries:[]},
+	elements_template : {elements_id:'',elements_name:'',element_type:'',question_num:'',question_text:'','el_type_html_content_text':'',entries:[]},
 	entries_template : {entries_id:'',entries_name:'',entries_content:'','entries_content-fill_free-rules-content':'','entries_content-fill_free-rules-min_char':'','entries_content-fill_free-rules-max_char':'',entry_input_type:'', 'entries_content-fill_standardized-rules-min_opt':'','entries_content-fill_standardized-rules-max_opt':'',options:[]},
 	lists_template : {lists_id:'',lists_name:'',options:[]},
 	options_template : {label:'',value:''},
 	entries_options_template : {label:'',value:''},
 
-   run : function(obj_quiz) {
+   run : function(obj_quiz,quiz_wrapper_selector) {
+		var qws = quiz_wrapper_selector || '#quiz_wrapper';
+
 		//clipboard
 		$('#clipboard').data('currents',{quiz:-1,elements:-1,entries:-1,lists:-1,'lists_options':-1,'entries_options':-1});
-		/*
-		MyOunf.quizzes[0].elements = diag_de_campo;
-		$('<textarea cols="50" rows="20"></textarea>').attr('id','save_all').css({overflow:'scroll'}).appendTo('body');
-		$('#save_quizzes').bind('click',function(e){
-			var str = '',i = 0;
-			$.each(MyOunf.quizzes[0].elements,function(key,val){
-				$.each(MyOunf.elements_template,function(k,v){
-					if (i == 0){str += "{\r\n";}
-					if(typeof v != 'object') {
-						str += "\t"+'"'+k+'":"'+MyOunf.quizzes[0].elements[key][k]+'",'+"\r\n";
-						i++;
-					} else {
-						var str_ents = '';
-						$.each(MyOunf.quizzes[0].elements[key].entries,function(kent,vent){
-							var e = 0;
-							$.each(MyOunf.entries_template,function(ket,vet){
-								if (e == 0) {str_ents += "\r\n\t{";}
-								str_ents += "\r\n\t\t"+'"'+ket+'":"'+MyOunf.quizzes[0].elements[key].entries[kent][ket]+'"';
-								if (e < 8){str_ents += ",";}
-								e++;
-							});
-							str_ents += "\r\n\t}";
-							if ((kent +1) < MyOunf.quizzes[0].elements[key].entries.length){str_ents +=","}
-						})
-						str += "\tentries:["+str_ents+"]"+"\r\n}";
-						if ((key + 1) < MyOunf.quizzes[0].elements.length){str +=",\r\n";}
-						i = 0;
-					}
-				});
-			});
-			$('#save_all').val(str);
-		});
-*/
+
 		if (obj_quiz) {
 			MyOunf.quizzes = '';
 			MyOunf.quizzes = [obj_quiz];
@@ -124,6 +94,7 @@ var MyOunf = {
 					var str_id = bid+'_id',str_name = bid+'_name';
 					var id = $(this).find('#'+str_id).val();
 					var name = $(this).find('#'+str_name).val();
+					var editing = {};
 					switch (bid) {
 						case 'quiz' :
 							conf = {quiz_id:'',quiz_name:'',elements:[],lists:[]};
@@ -132,16 +103,18 @@ var MyOunf = {
 							if (MyOunf.get_currents('quiz') < 0) {
 								MyOunf.quizzes.push(conf);
 							} else {
+								editing = {quiz_id:MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_id,quiz_name:MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_name};
 								MyOunf.quizzes[MyOunf.get_currents('quiz')] = $.extend({},conf);
 							}
 						break;
 						case 'elements' :
-							conf = {elements_id:'',elements_name:'',element_type:'',question_num:'',question_text:'','el_type-html-content-text':'',entries:[]};
+							conf = {elements_id:'',elements_name:'',element_type:'',question_num:'',question_text:'',el_type_html_content_text:'',entries:[]};
 							conf[str_id] = id;
 							conf[str_name] = name;
 							if (MyOunf.get_currents('elements') < 0) {
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements.push(conf);
 							} else {
+								editing = {elements_id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].elements_id,elements_name:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].elements_name};
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')] = $.extend({},conf);
 							}
 						break;
@@ -152,6 +125,7 @@ var MyOunf = {
 							if (MyOunf.get_currents('entries') < 0) {
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries.push(conf);
 							} else {
+								editing = {entries_id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].entries_id,entries_name:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].entries_name};
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')] = $.extend({},conf);
 							}
 						break;
@@ -163,6 +137,7 @@ var MyOunf = {
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].lists.push(conf);
 							} else {
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')] = $.extend({},conf);
+								editing = true;
 							}
 						break;
 					}
@@ -171,6 +146,7 @@ var MyOunf = {
 						MyOunf.set_currents(bid,obj.selected);
 						//console.log('currents->',$('#clipboard').data('currents'),' selected->',obj.selected);
 						MyOunf.set_blocks_from(bid);
+						MyOunf.mount(bid,qws,editing);
 					});
 				});
 			});
@@ -252,6 +228,7 @@ var MyOunf = {
 					var conf = $.extend({},MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')],form_data);
 					MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')] = '';
 					MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')] = conf;
+					MyOunf.mount('element_content',qws);
 				break;
 				case 'entries' :
 					MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')] = '';
@@ -261,6 +238,65 @@ var MyOunf = {
 			//console.log('current->',id,' CONF->',conf);
 		});
    },
+	mount : function (bid,qws,editing) {
+		var str = 'mount_'+bid;
+		MyOunf.builders[str](qws,editing);
+	},
+	builders : {
+		mount_quiz : function (selector,editing) {
+			if (!editing.quiz_id) {
+				var quiz_area = $('<div></div>').attr({'class':'myounf-quiz_area',id:MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_id});
+				quiz_area = $(quiz_area).append('<div id="myounf-quiz_title">'+MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_name+'</div>');
+				$(quiz_area).appendTo(selector);
+			} else {
+				$('#'+editing.quiz_id).attr({id:MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_id});
+				$('#'+MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_id).find('#myounf-quiz_title').text(MyOunf.quizzes[MyOunf.get_currents('quiz')].quiz_name);
+			}
+		},
+		mount_elements : function (selector,editing) {
+			if (!editing.elements_id) {
+				var element_area = $('<div></div>').attr({'class':'myounf-element_area',id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].elements_id});
+				var quiz_area = $(selector).find('[class=myounf-quiz_area]');
+				$(element_area).appendTo(quiz_area);
+				$('<div></div>').attr({'class':'myounf-element_content'}).appendTo(element_area);
+			} else {
+				$('#'+editing.elements_id).attr({id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].elements_id});
+			}
+		},
+		mount_element_content : function (selector) {
+			var element_id = $('#'+MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].elements_id);
+			var content_area = $(element_id).find('.myounf-element_content');
+			$(content_area).html('');
+			switch (MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].element_type) {
+				case 'html' :
+					$('<div></div>').attr({'class':'el_type_html_content_text'})
+					.text(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].el_type_html_content_text).appendTo(content_area);
+				break;
+				case 'question' :
+					if (MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].question_num != '') {
+						$('<div></div>').attr({'class':'question_num'}).text(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].question_num).appendTo(content_area);
+					}
+					if (MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].question_text != '') {
+						$('<div></div>').attr({'class':'question_text'}).text(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].question_text).appendTo(content_area);
+					}
+					$('<div></div>').attr({'class':'myounf-entries_area'}).appendTo(content_area);
+				break;
+			}
+		},
+		mount_entries : function (selector,editing) {
+			var element_id = $('#'+MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].elements_id);
+			var content_area = $(element_id).find('.myounf-element_content');
+			if (!editing.entries_id) {
+				var entry_area = $('<div></div>').attr({'class':'myounf-entry_area',id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].entries_id});
+				if ($(element_id).find('.myounf-entries_area').size() == 0) {
+					$('<div></div>').attr({'class':'myounf-entries_area'}).appendTo(content_area);
+				}
+				$(element_id).find('.myounf-entries_area').append(entry_area);
+			} else {
+				$('#'+editing.entries_id).attr({id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].entries_id});
+			}
+		}
+	},
 	set_block_list : function (elmid,data_from,selected,callback) {
 		var sel = '';
 		var scan_into = false;
@@ -301,8 +337,6 @@ var MyOunf = {
 		//console.log('scan_into->',scan_into,' data_from->',data_from);
 		$('#'+elmid+' option:not(:empty)').remove();
 		if (scan_into) {
-			//var str_i = data_from+'_id';
-			//var str_n = data_from+'_name';
 			$.each(scan_into,function(k,v){
 				//console.log('k->',k,' v->',v);
 				$('<option value="'+v[str_id]+'">'+v[str_name]+'</option>').appendTo('#'+elmid);
@@ -348,9 +382,6 @@ var MyOunf = {
 			selector = '[name='+k+']';
 			if (typeof v != 'object') {
 				switch ($(selector).attr('type')) {
-					//case 'select-one' :
-					//	val = $(selector+':selected').val();
-					//break;
 					case 'checkbox' :
 					case 'radio' :
 						val = $('input'+selector+':checked').val();
