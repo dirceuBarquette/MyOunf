@@ -155,8 +155,10 @@ div[class^=tochoose] {
 .myounf-entry_area {
    display:block;
    border:1px solid #D6D5D5;
-   width:30px;
-   height:15px;
+   min-width:30px;
+   /*max-width:200px;*/
+   min-height:22px;
+   /*max-height:100px;*/
 }
 .el_type_html_content_text {
 
