@@ -8,6 +8,7 @@
       <title>MyOunf - Make your Own Form</title>
       <link href="./css/monf.css" media="screen" type="text/css" rel="stylesheet"/>
       <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+      <script type="text/javascript" src="./js/jquery.json-2.2.js"></script>
       <script type="text/javascript" src="./js/myounf.js"></script>
       <script type="text/javascript">
          $(document).ready(function(){
@@ -40,6 +41,9 @@
          </span>
          <span class="edit_global">
             <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+         </span>
+         <span class="save_myounf">
+            <img src="./imgs/save-icon.png" title="salvar" alt="salvar" style="cursor:pointer;width:12px;height:12px" />
          </span>
       </div>
       <fieldset class="global_config">
@@ -233,6 +237,10 @@
 <div class="item_set">
    <label><span class="lang-">preenchimento padronizado</span></label>
    <input type="radio" value="fill_standardized" name="entries_content" class="choose_form" />
+</div>
+<div class="item_set">
+   <label><span class="lang-">etiqueta</span></label>
+   <input type="radio" value="fill_label" name="entries_content" class="choose_form" />
 </div>
 <div class="tochoose-entries_content" id="choose_form-entries_content-fill_free">
    <div id="block-fill_free" class="simple_block ">
@@ -433,6 +441,34 @@
 <div class="item_set">
    <label><span class="lang-">lista de checagem</span></label>
    <input type="radio" value="checklist" name="entry_input_type" class="" />
+</div>
+
+   </div>
+</div>
+   </div>
+</div>
+</div><div class="tochoose-entries_content" id="choose_form-entries_content-fill_label">
+   <div id="block-fill_label" class="simple_block ">
+   <div class="title_bar">
+      <div class="title_bar_text">etiqueta</div>
+      <div class="title_bar_display_content">
+         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+      </div>
+   </div>
+   <div id="settings-fill_label" class="settings">
+      <div id="block-entries_content-fill_label-label" class="simple_block ">
+   <div class="title_bar">
+      <div class="title_bar_text">conte&uacute;do</div>
+      <div class="title_bar_display_content">
+         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+      </div>
+   </div>
+   <div id="settings-entries_content-fill_label-label" class="settings">
+      <div class="item_set">
+   <label for="entries_content-fill_label-text"><span class="lang-">texto</span></label>
+   <textarea name="entries_content-fill_label-text" id="entries_content-fill_label-text" cols="20" rows="3"></textarea>
 </div>
 
    </div>
