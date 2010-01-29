@@ -1,16 +1,17 @@
 var MyOunf = {
 	//quiz example
-	quizzes : [{'quiz_id':'q1','quiz_name':"Diagnóstico de Campo",'elements':[],'lists':[]}],
+	quizzes : [],
 
 	//templates
 	quiz_template : {quiz_id:'',quiz_name:'',html:'',elements:[],lists:[]},
 	elements_template : {elements_id:'',elements_name:'',element_type:'',question_num:'',question_text:'','el_type_html_content_text':'',entries:[]},
-	entries_template : {entries_id:'',entries_name:'',entries_content:'','entries_content-fill_free-rules-content':'','entries_content-fill_free-rules-min_char':'','entries_content-fill_free-rules-max_char':'',entry_input_type:'', 'entries_content-fill_standardized-rules-min_opt':'','entries_content-fill_standardized-rules-max_opt':'',options:[]},
+	entries_template : {entries_id:'',entries_name:'',entries_content:'','entries_content-fill_free-rules-content':'','entries_content-fill_free-rules-min_char':'','entries_content-fill_free-rules-max_char':'',entry_input_type:'','entries_content-fill_label-text':'', 'entries_content-fill_standardized-rules-min_opt':'','entries_content-fill_standardized-rules-max_opt':'',options:[]},
 	lists_template : {lists_id:'',lists_name:'',options:[]},
 	options_template : {label:'',value:''},
 	entries_options_template : {label:'',value:''},
 
    run : function(obj_quiz,quiz_wrapper_selector) {
+
 		var qws = quiz_wrapper_selector || '#quiz_wrapper';
 
 		//clipboard
@@ -28,10 +29,10 @@ var MyOunf = {
 		$.each($('.block,.simple_block'),function(k,v){
 			var selector = '#'+this.id;
 			$(selector).find('.open_settings:first').bind('click',function(e){
-				$(selector).find('.settings:first').show();
+				$(selector).find('.settings:first').addClass('disp_block');
 			});
 			$(selector).find('.close_settings:first').bind('click',function(e){
-				$(selector).find('.settings:first').hide();
+				$(selector).find('.settings:first').removeClass('disp_block');
 			});
 		});
 		$.each($('.block'),function(k,v){
@@ -41,60 +42,139 @@ var MyOunf = {
 			$(selector).find('.block_combo:first').bind('change',function(e){
 				MyOunf.set_currents(bid,this.selectedIndex - 1);
 				MyOunf.set_blocks_from(bid);
-            if ($(this).val() != '') {
-               $(selector).find('.content_fieldset:first').show('normal',function(){
-						MyOunf.choose_form_handler($('#'+this.id).find('.choose_form:checked'));
-					});
-            } else {
-               MyOunf.set_currents(bid,-1);
-            }
+				MyOunf.set_settings_view(bid,MyOunf.get_currents(bid));
 			});
 			$(selector).find('.add_global:first').bind('click',function(e){
-				$(selector + ' .settings').find('[class^=tochoose]:visible').hide();
 				$(selector).find('.global_config:first').show('normal',function(){
 					$(this).find('input:first').focus();
-					$(selector).find('.content_fieldset:first').css({display:'none'});
 					$(this).find('input[type=text]').val('');
-					MyOunf.set_currents(bid,-1);//forcing to null
+					MyOunf.set_currents(bid,-1);//forcing null
 					MyOunf.set_blocks_from(bid);
-					if (bid != 'lists_options') {
-						$(selector).find('.block_combo:first').val(['']);
-					} else {
-						$('#block_list-lists_options option').val(['']);
-						$(this).children('div[class=item_set]').show();
-					}
-				});
-			});
-			$(selector).find('.edit_global:first').bind('click',function(e){
-				$(selector).find('.global_config:first').show('normal',function(){
-					$(this).find('input:first').focus();
-					$(selector).find('.content_fieldset:first').css({display:'none'});
 					switch (bid) {
-						case 'lists_options' :
-							$(this).children('div[class=item_set]').hide();
-							$(this).find('#choose_form-lists_options-new_option').show('normal',function(){
-								$(this).find('input[type=text]:eq(0)').val($(selector).find('#block_list-lists_options option:selected').text());
-								$(this).find('input[type=text]:eq(1)').val($(selector).find('#block_list-lists_options option:selected').val());
-							});
+						case 'lists_options':
+							$('#block_list-lists_options').val(['']);
+							$('.tochoose-lists_options').css('display','none');
+							$('[name=lists_options]').val(['']);
+							$(this).find('.settings').removeClass('disp_block');
+							$(this).children('div[class=item_set]').show();
+						break;
+						case 'entries_options' :
+							$('#block_list-entries_options').val(['']);
+							$('.tochoose-entries_options').css('display','none');
+							$('[name=entries_options]').val(['']);
+							$(this).find('.settings').removeClass('disp_block');
+							$(this).children('div[class=item_set]').show();
 						break;
 						default :
-							$(this).find('input[type=text]:eq(0)').val($(selector).find('.block_combo:first option:selected').val());
-							$(this).find('input[type=text]:eq(1)').val($(selector).find('.block_combo:first option:selected').text());
-						break;
+							MyOunf.set_settings_view(bid,MyOunf.get_currents(bid));
+							$(selector).find('.block_combo:first').val(['']);
 					}
 				});
 			});
-			$(selector).find('.cancel_adding_global:first').bind('click',function(e){
-				$(selector).find('.global_config:first').hide();
+			$(selector).find('.edit_global:first,.remove_global:first').bind('click',function(e){
+				if (MyOunf.get_currents(bid) > -1) {
+					var action = this.className.split('_')[0];
+					var ipt1 = ipt2 = '';
+					$(selector).find('.global_config:first').show('normal',function(){
+						//if from removing
+						MyOunf.change2original_global_config_view(this);
+						$(this).find('input:first').focus();
+						$(selector).find('.content_fieldset:first').removeClass('disp_block');
+						switch (bid) {
+							case 'entries_options' :
+								$(this).children('div[class=item_set]').hide();
+								$(this).find('.title_bar').hide('fast',function(){
+									$('[name=entries_options]').val(['entries_new_option']);
+									$('#settings-entries_options-entries_new_option').show();
+									$(this).find('#choose_form-entries_options-entries_new_option').show();
+									if (action == 'edit' && $('#set-entries_options').is(':hidden')) {
+										$('#set-entries_options').show();
+									}
+								});
+								ipt1 = $(this).find('input[type=text]:eq(0)').val($(selector).find('#block_list-entries_options option:selected').text());
+								ipt2 = $(this).find('input[type=text]:eq(1)').val($(selector).find('#block_list-entries_options option:selected').val());
+							break;
+							case 'lists_options' :
+								$(this).children('div[class=item_set]').hide();
+								$(this).find('.title_bar').hide('fast',function(){
+									$('[name=lists_options]').val(['new_option']);
+									$('#settings-lists_options-new').show();
+									$(this).find('#choose_form-lists_options-new_option').show();
+									if (action == 'edit' && $('#set-lists_options').is(':hidden')) {
+										$('#set-lists_options').show();
+									}
+								});
+								ipt1 = $(this).find('input[type=text]:eq(0)').val($(selector).find('#block_list-lists_options option:selected').text());
+								ipt2 = $(this).find('input[type=text]:eq(1)').val($(selector).find('#block_list-lists_options option:selected').val());
+							break;
+							default :
+								ipt1 = $(this).find('input[type=text]:eq(0)').val($(selector).find('.block_combo:first option:selected').val());
+								ipt2 = $(this).find('input[type=text]:eq(1)').val($(selector).find('.block_combo:first option:selected').text());
+							break;
+						}
+						if (action == 'remove') {
+							$(ipt1).attr({readonly:'readonly'});
+							$(ipt2).attr({readonly:'readonly'});
+							$('#set-'+bid).css({display:'none'});
+							$('#remove-'+bid).css({display:'block'});
+						}
+					});
+				}
 			});
-
+			$(selector).find('.cancel_adding_global:first').bind('click',function(e){
+				$(selector).find('.global_config:first').hide('normal',function(){
+					MyOunf.change2original_global_config_view(this);
+					MyOunf.set_currents(bid,-1);
+					MyOunf.set_blocks_from(bid);
+					$(selector).find('.block_combo:first').val(['']);
+				});
+			});
+			$(selector).find('.removing_global:first').bind('click',function(e){
+				if (MyOunf.get_currents(bid) > -1) {
+					$(selector).find('.global_config:first').hide('normal',function(){
+						var new_object_arr = '';
+						switch (bid) {
+							case 'quiz' :
+								new_object_arr = MyOunf.remove_object(MyOunf.quizzes,MyOunf.get_currents('quiz'));
+								MyOunf.quizzes = new_object_arr;
+							break;
+							case 'elements' :
+								new_object_arr = MyOunf.remove_object(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements,MyOunf.get_currents('elements'));
+								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements = new_object_arr;
+							break;
+							case 'entries' :
+								new_object_arr = MyOunf.remove_object(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries,MyOunf.get_currents('entries'));
+								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries = new_object_arr;
+							break;
+							case 'lists' :
+								new_object_arr = MyOunf.remove_object(MyOunf.quizzes[MyOunf.get_currents('quiz')].lists,MyOunf.get_currents('lists'));
+								MyOunf.quizzes[MyOunf.get_currents('quiz')].lists = new_object_arr;
+							break;
+							case 'lists_options' :
+								new_object_arr = MyOunf.remove_object(MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options,MyOunf.get_currents('lists_options'));
+								MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options = new_object_arr;
+							break;
+							case 'entries_options' :
+								new_object_arr = MyOunf.remove_object(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options,MyOunf.get_currents('entries_options'));
+								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options = new_object_arr;
+							break;
+						}
+						MyOunf.set_currents(bid,-1);
+						MyOunf.set_block_list('block_list-'+bid,bid,'',function(obj) {
+							MyOunf.set_blocks_from(bid);
+						});
+					});
+				}
+			});
 			$(selector).find('.adding_global:first').bind('click',function(e){
 				$(selector).find('.global_config:first').hide('normal',function(){
-				var conf = {};
+					var conf = {};
 					var str_id = bid+'_id',str_name = bid+'_name';
 					var id = $(this).find('#'+str_id).val();
 					var name = $(this).find('#'+str_name).val();
 					var editing = {};
+					//if from removing
+					MyOunf.change2original_global_config_view(this);
 					switch (bid) {
 						case 'quiz' :
 							if (MyOunf.get_currents('quiz') < 0) {
@@ -117,8 +197,8 @@ var MyOunf = {
 							}
 						break;
 						case 'entries' :
-								if (MyOunf.get_currents('entries') < 0) {
-								conf = {entries_id:id,entries_name:name,entries_content:'','entries_content-fill_free-rules-content':'','entries_content-fill_free-rules-min_char':'','entries_content-fill_free-rules-max_char':'',entry_input_type:'', 'entries_content-fill_standardized-rules-min_opt':'','entries_content-fill_standardized-rules-max_opt':'',options:[]};
+							if (MyOunf.get_currents('entries') < 0) {
+								conf = {entries_id:id,entries_name:name,entries_content:'','entries_content-fill_free-rules-content':'','entries_content-fill_free-rules-min_char':'','entries_content-fill_free-rules-max_char':'',entry_input_type:'','entries_content-fill_label-text':'','entries_content-fill_standardized-rules-min_opt':'','entries_content-fill_standardized-rules-max_opt':'',options:[]};
 								MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries.push(conf);
 							} else {
 								editing = {entries_id:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].entries_id,entries_name:MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].entries_name};
@@ -137,9 +217,8 @@ var MyOunf = {
 						break;
 					}
 					MyOunf.set_block_list('block_list-'+bid,bid,id,function(obj) {
-						$(selector).find('.content_fieldset:first').show();
 						MyOunf.set_currents(bid,obj.selected);
-						//console.log('currents->',$('#clipboard').data('currents'),' selected->',obj.selected);
+						MyOunf.set_settings_view(bid,MyOunf.get_currents(bid));
 						MyOunf.set_blocks_from(bid);
 						MyOunf.mount(bid,qws,editing);
 					});
@@ -149,10 +228,20 @@ var MyOunf = {
 		$('.choose_form').bind('click',function(e){
 			MyOunf.choose_form_handler(this);
 		});
-		$('#set_content_options-option,#set_content_options-entries_option').bind('click',function(e){
-			$(this).parents('.global_config').hide();
+		$('.block_options_combo').bind('change',function(e){
+			var bid = this.id.split('-')[1];
+			MyOunf.set_currents(bid,this.selectedIndex - 1);
+			MyOunf.set_blocks_from(bid);
+			if ($(this).val() == '') {
+				MyOunf.set_currents(bid,-1);
+			}
+		});
+		$('#set-lists_options,#set-entries_options').bind('click',function(e){
+			$(this).parents('.global_config').hide('normal',function(){
+				$(this).find('.title_bar').css('display','block');
+			});
 			var conf = {},str = '',block2set = 'lists_options';
-				if (this.id == 'set_content_options-option') {
+				if (this.id == 'set-lists_options') {
 					str = $('input[name=lists_options]:checked').val();
 				} else {
 					str = $('input[name=entries_options]:checked').val();
@@ -161,7 +250,11 @@ var MyOunf = {
 			switch (str) {
 				case 'new_option' :
 					conf = {label:$('#lists_options_label').val(),value:$('#lists_options_value').val()};
-					MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options.push(conf);
+					if (MyOunf.get_currents('lists_options') <0) {
+						MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options.push(conf);
+					} else {
+						MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options[MyOunf.get_currents('lists_options')] = conf;
+					}
 				break;
 				case 'from_lists' :
 					$.each(MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[$('#lists_available').val()].options,function(k,v){
@@ -179,7 +272,11 @@ var MyOunf = {
 				break;
 				case 'entries_new_option' :
 					conf = {label:$('#label').val(),value:$('#value').val()};
-					MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options.push(conf);
+					if (MyOunf.get_currents('entries_options') < 0) {
+						MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options.push(conf);
+					} else {
+						MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options[MyOunf.get_currents('entries_options')] = conf;
+					}
 					MyOunf.mount('entry_content',qws);
 				break;
 				case 'entries_from_lists' :
@@ -201,6 +298,7 @@ var MyOunf = {
 			}
 
 			MyOunf.set_block_list('block_list-'+block2set,block2set,'');
+			MyOunf.set_settings_view(block2set,MyOunf.get_currents(block2set));
 		});
 		$('.cancel_content_options').bind('click',function(e){
 			$(this).parents('.global_config').hide();
@@ -220,12 +318,34 @@ var MyOunf = {
 					var conf = $.extend({},MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')],form_data);
 					MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')] = '';
 					MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')] = conf;
-					MyOunf.mount('entry_content');
+					MyOunf.mount('entry_content',qws);
 				break;
 			}
 			//console.log('current->',id,' CONF->',conf);
 		});
    },
+	remove_object : function (arr,to_remove) {
+		var new_arr,left_slice,right_slice;
+		if (arr.length - 1 == to_remove) {
+			arr.pop();
+			new_arr = arr
+		} else {
+			if (to_remove != 0) {
+				left_slice = arr.slice(0,to_remove);
+				right_slice = arr.slice(to_remove + 1);
+				new_arr = left_slice.concat(right_slice);
+			} else {
+				new_arr = arr.slice(1);
+			}
+		}
+		return new_arr;
+	},
+	change2original_global_config_view : function (selector) {
+		$(selector).find('input').filter('[type=text]').attr({readonly:false});
+		//$(selector).find('.remove_global').attr({'class':'adding_global',value:'ok'});
+		$(selector).find('.removing_global').css({display:'none'});
+		$(selector).find('.adding_global').css({display:'block'});
+	},
 	mount : function (bid,qws,editing) {
 		var str = 'mount_'+bid;
 		if (MyOunf.builders[str] && typeof MyOunf.builders[str] == 'function') {
@@ -296,6 +416,10 @@ var MyOunf = {
 			var type = myounf_entry.entry_input_type;
 			$(entry_area).html('');
 			switch (myounf_entry.entries_content) {
+				case 'fill_label' :
+					$('<div></div>').attr({id:myounf_entry.entries_id,'class':'entry_content_label'})
+					.text(myounf_entry['entries_content-fill_label-text']).appendTo(entry_area);
+				break;
 				case 'fill_free' :
 					switch (type) {
 						case 'textarea' :
@@ -355,13 +479,11 @@ var MyOunf = {
 				}
 			break;
 			case 'lists_options' :
-				//console.log('cur_list->',MyOunf.get_currents('lists'));
 				if (MyOunf.get_currents('lists') > -1) {
 					scan_into = $.map(MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options,function(n,i){return {lists_options_id:n.value,lists_options_nm:n.label};});
 				}
 			break;
 			case 'entries_options' :
-				//console.log('cur_list->',MyOunf.get_currents('lists'));
 				if (MyOunf.get_currents('entries') > -1) {
 					scan_into = $.map(MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options,function(n,i){return {entries_options_id:n.value,entries_options_nm:n.label};});
 				}
@@ -371,7 +493,6 @@ var MyOunf = {
 		$('#'+elmid+' option:not(:empty)').remove();
 		if (scan_into) {
 			$.each(scan_into,function(k,v){
-				//console.log('k->',k,' v->',v);
 				$('<option value="'+v[str_id]+'">'+v[str_name]+'</option>').appendTo('#'+elmid);
 				sel = v[str_id] == selected ? k : '';
 			});
@@ -436,6 +557,20 @@ var MyOunf = {
 			}
 		});
 	},
+	set_simple_block_view : function (selector) {
+		$(selector).find('.global_config').hide();
+		$(selector).find('.disp_block').removeClass('disp_block');
+		$(selector).find('[class^=tochoose]').hide();
+	},
+	set_settings_view : function (block,current) {
+		var selector = '#content_block-'+block;
+		if (current > -1) {
+			$(selector).addClass('disp_block');
+		} else {
+			$(selector).removeClass('disp_block');
+		}
+		MyOunf.set_simple_block_view(selector);
+	},
 	set_blocks_from : function (block) {
 		var to_scan = {};
 		switch (block) {
@@ -468,7 +603,6 @@ var MyOunf = {
 				}
 			break;
 			case 'elements' :
-				//console.log('currents in set_blocks_from->',$('#clipboard').data('currents'));
 				MyOunf.set_currents('entries',-1);
 				MyOunf.set_block_list('block_list-entries','false','');
 				MyOunf.scan_block($.extend({},MyOunf.entries_template));
@@ -505,24 +639,29 @@ var MyOunf = {
 				}
 			break;
 			case 'entries' :
+				MyOunf.set_currents('entries_options',-1);
+				MyOunf.set_block_list('block_list-entries_options','false','');
+				MyOunf.scan_block($.extend({},MyOunf.entries_options_template));
 				if (MyOunf.get_currents('entries') > -1) {
+					if (MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options.length > 0) {
+						MyOunf.set_block_list('block_list-entries_options','entries_options','');
+					}
 					MyOunf.scan_block($.extend({},MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')]));
 				} else {
-					to_scan = $.extend({},MyOunf.entries_template);
+					MyOunf.set_block_list('block_list-entries_options','false','');
+					MyOunf.set_currents('entries_options',-1);
+					MyOunf.set_blocks_from('entries_options');
+					MyOunf.scan_block($.extend({},MyOunf.entries_options_template));
 				}
 			break;
 			case 'lists_options' :
 				if (MyOunf.get_currents('lists_options') > -1) {
-					MyOunf.scan_block($.extend({},MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('listts')].options[MyOunf.get_currents('lists_options')]));
-				} else {
-					to_scan = $.extend({},MyOunf.options_template);
+					MyOunf.scan_block($.extend({},MyOunf.quizzes[MyOunf.get_currents('quiz')].lists[MyOunf.get_currents('lists')].options[MyOunf.get_currents('lists_options')]));
 				}
 			break;
 			case 'entries_options' :
 				if (MyOunf.get_currents('entries_options') > -1) {
 					MyOunf.scan_block($.extend({},MyOunf.quizzes[MyOunf.get_currents('quiz')].elements[MyOunf.get_currents('elements')].entries[MyOunf.get_currents('entries')].options[MyOunf.get_currents('entries_options')]));
-				} else {
-					to_scan = $.extend({},MyOunf.entries_options_template);
 				}
 			break;
 		}
@@ -540,11 +679,25 @@ var MyOunf = {
 		}
 		var hide_class = '.tochoose-'+o_name;
 		var display_id = '#choose_form-'+o_name+'-'+o_value;
-		//console.log('display_id->',display_id,hide_class)
 		$(hide_class).css({display:'none'});
 		$(display_id).show('normal',function(){
-			//console.log('display_id->',display_id,hide_class);
 			switch (display_id) {
+				case '#choose_form-lists_options-new_option' :
+					$(display_id).children('#block-lists_options-new').show('normal',function(){
+						$(this).children().show();
+						MyOunf.change2original_global_config_view(this);
+						$('#remove-lists_options').hide();
+						$('#set-lists_options').show();
+					});
+				break;
+				case '#choose_form-entries_options-entries_new_option' :
+					$(display_id).children('#block-entries_options-entries_new_option').show('normal',function(){
+						$(this).children().show();
+						MyOunf.change2original_global_config_view(this);
+						$('#remove-entries_options').hide();
+						$('#set-entries_options').show();
+					});
+				break;
 				case '#choose_form-entries_options-entries_from_lists' :
 					$('#entries_lists_available option:not(:empty)').remove();
 					$.each(MyOunf.quizzes[MyOunf.get_currents('quiz')].lists,function(k,v){

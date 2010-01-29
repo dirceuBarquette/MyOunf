@@ -5,26 +5,61 @@ body {
    margin:0;
    color:#282ea7;
 }
-#config_wrapper {
-   width:530px;
-   float:left;
-   border:1px solid #CBCBCB;
-}
 #quiz_wrapper {
    float:left;
    width:400px;
    height:500px;
    overflow:auto;
 }
-#config_wrapper input[type="text"],select,textarea {
-   font-size:14px;
-   font-style:italic;
-   color:#403F3F;
+/*envolve todo o config do quiz*/
+#config_wrapper {
+   width:530px;
+   height:500px;
+   float:left;
+   border:1px solid #CBCBCB;
+   overflow:auto;
 }
-#config_wrapper input[type="button"] {
-   font-size:14px;
-   font-weight:bold;
-   color:#282ea7;
+/*item_set*/
+.item_set {
+   width:auto;
+   margin:5px;
+}
+.item_set label {
+
+}
+.item_set input,select,textarea {
+
+}
+/*item_set*/
+/*block*/
+.block {
+   width:auto;
+   /*border:1px solid red;*/
+}
+
+/*block*/
+/*simple_block*/
+.simple_block,.simple_block_style {
+   width:auto;
+}
+/*simple_block*/
+/*barra de título dos blocos*/
+.title_bar {
+   background-color:#E9E8E8;
+   width:auto;
+   clear:both;
+   height:26px;
+   border: 1px solid #D6D5D5;
+}
+.title_bar_text {
+   float:left;
+   font-size:16px;
+   font-style:normal;
+   margin-left:5px;
+   margin-top:3px;
+}
+.title_bar_display_content {
+   float:right;
 }
 .open_settings img{
    width:12px;
@@ -35,6 +70,18 @@ body {
    width:12px;
    height:12px;
    cursor:pointer;
+}
+/*barra de título dos blocos*/
+
+/*settings_menu*/
+.settings_menu {
+   width:auto;
+   margin:6px 0 6px 10px;
+   font-size:14px;
+   font-style:normal;
+}
+.settings_menu select.block_combo,.block_options_combo {
+   max-width:220px;
 }
 .add_global img{
    width:12px;
@@ -51,85 +98,65 @@ body {
    height:12px;
    cursor:pointer;
 }
+/*settings_menu*/
+
+/*global_config area*/
+.global_config {
+   display:none;
+   width:auto;
+   padding:0;
+   margin:2px 0 2px 10px;
+   font-size:12px;
+   font-style:normal;
+}
+.global_config_buttons {
+   margin:10px 0 5px 5px;
+   clear:left;
+}
+.global_config_buttons input[type=button]{
+   margin:5px 0 5px 10px;
+   float:left;
+}
+.removing_global {
+   display:none;
+}
+
+/*global_config area*/
+
+.settings {
+   display:none;
+   margin-left:10px;
+}
+.content_buttons {
+   margin:5px 0 5px 10px;
+}
+/*content_fieldset*/
 .content_fieldset {
    display:none;
-   width:90%;
-   margin-top:10px;
-   margin-left:10px;
-   text-transform:capitalize;
-   /*font-weight:600;*/
+   width:auto;
+   padding:0;
+   margin:2px 0 2px 10px;
+   font-size:12px;
+   font-style:normal;
 }
+/*content_fieldset*/
+
+/*tochoose*/
 .tochoose {
    display:none;
-   margin-top:10px;
-   margin-left:10px;
    text-transform:capitalize;
    font-weight:600;
 }
-.simple_block,.simple_block_style {
-   margin-top:10px;
-   margin-left:10px;
-   text-transform:capitalize;
-   /*font-weight:600;*/
-}
-.title_bar {
-   background-color:#E9E8E8;
-   width:97%;
-   clear:both;
-   height:26px;
-   margin-left:10px;
-   margin-top:2px;
-   border: 1px solid #D6D5D5;
-}
-.title_bar_text {
-   float:left;
-   font-size:16px;
-   font-style:normal;
-   /*font-weight:bold;*/
-   margin-left:5px;
-   margin-top:3px;
-   text-transform:capitalize;
-}
-.title_bar_display_content {
-   float:right;
-}
-.settings {
-   display:none;
-}
-.settings_menu {
-   /*display:none;*/
-   width:90%;
-   margin:2px 0 2px 20px;
-   font-size:14px;
-   font-style:normal;
-   /*font-weight:bold;*/
-   text-transform:capitalize;
-}
-.global_config {
-   display:none;
-   width:90%;
-   margin:2px 0 2px 20px;
-   font-size:12px;
-   font-style:normal;
-   /*font-weight:bold;*/
-   text-transform:capitalize;
-}
-.item_set {
-   margin:2px 0 2px 20px;
-}
-.identification_buttons {
-   margin:2px 0 2px 20px;
-}
-.content_buttons {
-   margin:2px 0 2px 20px;
-}
 div[class^=tochoose] {
    display:none;
+   margin-left:10px;
 }
-#block-tools {
-   margin-top:2px;
-   margin-left:0;
+/*tochoose*/
+
+.disp_block {
+   display:block;
 }
+
 /*myounf quiz*/
 .myounf-quiz_area {
    display:block;
@@ -163,3 +190,4 @@ div[class^=tochoose] {
 .el_type_html_content_text {
 
 }
+/*myounf quiz*/

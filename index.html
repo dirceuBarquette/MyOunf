@@ -11,6 +11,7 @@
       <script type="text/javascript" src="./js/myounf.js"></script>
       <script type="text/javascript">
          $(document).ready(function(){
+            //$('.global_config,.settings,.content_fieldset,.tochoose,[class^=tochoose]').show();
             MyOunf.run();
          });
       </script>
@@ -18,749 +19,816 @@
    <body>
       <div id="clipboard"></div>
       <div id="config_wrapper">
+<!--início bloco quiz      -->
          <div id="block-quiz" class="block ">
-   <div class="title_bar">
-      <div class="title_bar_text">question&aacute;rios</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-quiz" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-quiz"><span class="lang-ids"></span></label>
-         <select id="block_list-quiz" name="block_list-quiz" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="quiz_id"><span class="lang-">id</span></label>
-            <input type="text" name="quiz_id" id="quiz_id" value="" />
+            <div class="title_bar">
+               <div class="title_bar_text">question&aacute;rios</div>
+               <div class="title_bar_display_content">
+                  <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" />
+                  </span>
+                  <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" />
+                  </span>
+               </div>
+            </div>
+            <div id="settings-quiz" class="settings">
+               <div class="settings_menu">
+                  <label for="block_list-quiz"><span class="lang-ids"></span></label>
+                  <select id="block_list-quiz" name="block_list-quiz" class="block_combo">
+                     <option value=""></option>
+                  </select>
+                  <span class="add_global">
+                     <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                  </span>
+                  <span class="remove_global">
+                     <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                  </span>
+                  <span class="edit_global">
+                     <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                  </span>
+               </div>
+               <fieldset class="global_config">
+                  <div class="item_set">
+                     <label for="quiz_id"><span class="lang-">id</span></label>
+                     <input type="text" name="quiz_id" id="quiz_id" value="" />
+                  </div>
+                  <div class="item_set">
+                     <label for="quiz_name"><span class="lang-">nome</span></label>
+                     <input type="text" name="quiz_name" id="quiz_name" value="" />
+                  </div>
+                  <div class="global_config_buttons">
+                     <input type="button" id="set-quiz" class="adding_global" value="ok" />
+                     <input type="button" id="remove-quiz" class="removing_global" value="remover" />
+                     <input type="button" id="cancel-quiz" class="cancel_adding_global" value="cancelar" />
+                  </div>
+               </fieldset>
+               <fieldset id="content_block-quiz" class="content_fieldset">
+<!--início bloco elementos      -->
+                  <div id="block-elements" class="block ">
+                     <div class="title_bar">
+                        <div class="title_bar_text">elementos</div>
+                        <div class="title_bar_display_content">
+                           <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                           <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                        </div>
+                     </div>
+                     <div id="settings-elements" class="settings">
+                        <div class="settings_menu">
+                           <label for="block_list-elements"><span class="lang-ids"></span></label>
+                           <select id="block_list-elements" name="block_list-elements" class="block_combo">
+                              <option value=""></option>
+                           </select>
+                           <span class="add_global">
+                              <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                           </span>
+                           <span class="remove_global">
+                              <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                           </span>
+                           <span class="edit_global">
+                              <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                           </span>
+                        </div>
+                        <fieldset class="global_config">
+                           <div class="item_set">
+                              <label for="elements_id"><span class="lang-">id</span></label>
+                              <input type="text" name="elements_id" id="elements_id" value="" />
+                           </div>
+                           <div class="item_set">
+                              <label for="elements_name"><span class="lang-">nome</span></label>
+                              <input type="text" name="elements_name" id="elements_name" value="" />
+                           </div>
+                           <div class="global_config_buttons">
+                              <input type="button" id="set-elements" class="adding_global" value="ok" />
+                              <input type="button" id="remove-elements" class="removing_global" value="remover" />
+                              <input type="button" id="cancel-elements" class="cancel_adding_global" value="cancelar" />
+                           </div>
+                        </fieldset>
+                        <fieldset id="content_block-elements" class="content_fieldset">
+                           <div id="block-el_type" class="simple_block ">
+                              <div class="title_bar">
+                                 <div class="title_bar_text">tipo</div>
+                                 <div class="title_bar_display_content">
+                                    <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                    <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                 </div>
+                              </div>
+                              <div id="settings-el_type" class="settings">
+                                 <div class="item_set">
+                                    <label><span class="lang-">html</span></label>
+                                    <input type="radio" value="html" name="element_type" class="choose_form" />
+                                 </div>
+                                 <div class="item_set">
+                                    <label><span class="lang-">quest&atilde;o</span></label>
+                                    <input type="radio" value="question" name="element_type" class="choose_form" />
+                                 </div>
+                                 <div class="tochoose-element_type" id="choose_form-element_type-html">
+                                    <div id="block-element_type-html" class="simple_block ">
+                                       <div class="title_bar">
+                                          <div class="title_bar_text">html</div>
+                                          <div class="title_bar_display_content">
+                                             <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                             <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                          </div>
+                                       </div>
+                                       <div id="settings-element_type-html" class="settings">
+                                          <div id="block-element_type-html-content" class="simple_block ">
+                                             <div class="title_bar">
+                                                <div class="title_bar_text">conte&uacute;do</div>
+                                                <div class="title_bar_display_content">
+                                                   <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                   <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                </div>
+                                             </div>
+                                             <div id="settings-element_type-html-content" class="settings">
+                                                <div class="item_set">
+                                                   <label for="el_type_html_content_text"><span class="lang-">texto</span></label>
+                                                   <textarea name="el_type_html_content_text" id="el_type_html_content_text" cols="20" rows="3"></textarea>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="tochoose-element_type" id="choose_form-element_type-question">
+                                    <div id="block-element_type-question" class="simple_block ">
+                                       <div class="title_bar">
+                                          <div class="title_bar_text">quest&atilde;o</div>
+                                          <div class="title_bar_display_content">
+                                             <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                             <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                          </div>
+                                       </div>
+                                       <div id="settings-element_type-question" class="settings">
+                                          <div id="block-element_type-question-answer_text" class="simple_block ">
+                                             <div class="title_bar">
+                                                <div class="title_bar_text">dados do enunciado</div>
+                                                <div class="title_bar_display_content">
+                                                   <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                   <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                </div>
+                                             </div>
+                                             <div id="settings-element_type-question-answer_text" class="settings">
+                                                <div class="item_set">
+                                                   <label for="question_num"><span class="lang-">marcador</span></label>
+                                                   <input type="text" name="question_num" id="question_num" value="" />
+                                                </div>
+                                                <div class="item_set">
+                                                   <label for="question_text"><span class="lang-">texto</span></label>
+                                                   <textarea name="question_text" id="question_text" cols="20" rows="3"></textarea>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div id="block-element_type-question-the_answer" class="simple_block ">
+                                             <div class="title_bar">
+                                                <div class="title_bar_text">resposta</div>
+                                                <div class="title_bar_display_content">
+                                                   <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                   <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                </div>
+                                             </div>
+                                             <div id="settings-element_type-question-the_answer" class="settings">
+                                                <div id="block-entries" class="block simple_block_style">
+                                                   <div class="title_bar">
+                                                      <div class="title_bar_text">entradas</div>
+                                                      <div class="title_bar_display_content">
+                                                         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>                                                         </div>
+                                                      </div>
+                                                      <div id="settings-entries" class="settings">
+                                                         <div class="settings_menu">
+                                                            <label for="block_list-entries"><span class="lang-ids"></span></label>
+                                                            <select id="block_list-entries" name="block_list-entries" class="block_combo">
+                                                               <option value=""></option>
+                                                            </select>
+                                                            <span class="add_global">
+                                                               <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                                                            </span>
+                                                            <span class="remove_global">
+                                                               <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                                                            </span>
+                                                            <span class="edit_global">
+                                                               <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                                                            </span>
+                                                         </div>
+                                                         <fieldset class="global_config">
+                                                            <div class="item_set">
+                                                               <label for="entries_id"><span class="lang-">id</span></label>
+                                                               <input type="text" name="entries_id" id="entries_id" value="" />
+                                                            </div>
+                                                            <div class="item_set">
+                                                               <label for="entries_name"><span class="lang-">nome</span></label>
+                                                               <input type="text" name="entries_name" id="entries_name" value="" />
+                                                            </div>
+                                                            <div class="global_config_buttons">
+                                                               <input type="button" id="set-entries" class="adding_global" value="ok" />
+                                                               <input type="button" id="remove-entries" class="removing_global" value="remover" />
+                                                               <input type="button" id="cancel-entries" class="cancel_adding_global" value="cancelar" />
+                                                            </div>
+                                                         </fieldset>
+                                                         <fieldset id="content_block-entries" class="content_fieldset">
+                                                            <div id="block-entries_content" class="simple_block ">
+                                                               <div class="title_bar">
+                                                                  <div class="title_bar_text">conte&uacute;do</div>
+                                                                  <div class="title_bar_display_content">
+                                                                     <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                     <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                  </div>
+                                                               </div>
+                                                               <div id="settings-entries_content" class="settings">
+                                                                  <div class="item_set">
+                                                                     <label><span class="lang-">preenchimento livre</span></label>
+                                                                     <input type="radio" value="fill_free" name="entries_content" class="choose_form" />
+                                                                  </div>
+                                                                  <div class="item_set">
+                                                                     <label><span class="lang-">preenchimento padronizado</span></label>
+                                                                     <input type="radio" value="fill_standardized" name="entries_content" class="choose_form" />
+                                                                  </div>
+                                                                  <div class="item_set">
+                                                                     <label><span class="lang-">etiqueta</span></label>
+                                                                     <input type="radio" value="fill_label" name="entries_content" class="choose_form" />
+                                                                  </div>
+                                                                  <div class="tochoose-entries_content" id="choose_form-entries_content-fill_free">
+                                                                     <div id="block-fill_free" class="simple_block ">
+                                                                        <div class="title_bar">
+                                                                           <div class="title_bar_text">livre</div>
+                                                                           <div class="title_bar_display_content">
+                                                                              <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                              <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div id="settings-fill_free" class="settings">
+                                                                           <div id="block-entries_content-fill_free-rules" class="simple_block ">
+                                                                              <div class="title_bar">
+                                                                                 <div class="title_bar_text">regras</div>
+                                                                                 <div class="title_bar_display_content">
+                                                                                    <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                    <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div id="settings-entries_content-fill_free-rules" class="settings">
+                                                                                 <div class="item_set">
+                                                                                    <label for="entries_content-fill_free-rules-content"><span class="lang-">regras</span></label>
+                                                                                    <select name="entries_content-fill_free-rules-content" id="entries_content-fill_free-rules-content">
+                                                                                       <option value=""></option>
+                                                                                       <option value="rules-allows_all_char">qualquer caracter</option>
+                                                                                       <option value="rules-allows_letters_pont_char">letras e pontua&ccedil;&atilde;o</option>
+                                                                                       <option value="rules-allows_num_char">n&uacute;meros</option>
+                                                                                       <option value="rules-allows_num_char">data</option>
+                                                                                    </select>
+                                                                                 </div>
+                                                                                 <div class="item_set">
+                                                                                    <label for="entries_content-fill_free-rules-min_char"><span class="lang-">m&iacute;nimo de caracteres</span></label>
+                                                                                    <input type="text" name="entries_content-fill_free-rules-min_char" id="entries_content-fill_free-rules-min_char" value="" />
+                                                                                 </div>
+                                                                                 <div class="item_set">
+                                                                                    <label for="entries_content-fill_free-rules-max_char"><span class="lang-">m&aacute;ximo de caracteres</span></label>
+                                                                                    <input type="text" name="entries_content-fill_free-rules-max_char" id="entries_content-fill_free-rules-max_char" value="" />
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div id="block-entries_content-fill_free-presentation" class="simple_block ">
+                                                                              <div class="title_bar">
+                                                                                 <div class="title_bar_text">apresenta&ccedil;&atilde;o</div>
+                                                                                 <div class="title_bar_display_content">
+                                                                                    <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                    <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                                 </div>
+                                                                              </div>
+                                                                              <div id="settings-entries_content-fill_free-presentation" class="settings">
+                                                                                 <div class="item_set">
+                                                                                    <label><span class="lang-">campo texto</span></label>
+                                                                                    <input type="radio" value="text" name="entry_input_type" class="" />
+                                                                                 </div>
+                                                                                 <div class="item_set">
+                                                                                    <label><span class="lang-">campo &aacute;rea de texto</span></label>
+                                                                                    <input type="radio" value="textarea" name="entry_input_type" class="" />
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <div class="tochoose-entries_content" id="choose_form-entries_content-fill_standardized">
+                                                                     <div id="block-fill_standardized" class="simple_block ">
+                                                                        <div class="title_bar">
+                                                                           <div class="title_bar_text">padronizado</div>
+                                                                           <div class="title_bar_display_content">
+                                                                              <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                              <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div id="settings-fill_standardized" class="settings">
+                                                                           <div id="block-entries_options" class="block simple_block_style">
+                                                                              <div class="title_bar">
+                                                                                 <div class="title_bar_text">op&ccedil;&otilde;es</div>
+                                                                                 <div class="title_bar_display_content">
+                                                                                 <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                 <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div id="settings-entries_options" class="settings">
+                                                                              <div class="settings_menu">
+                                                                                 <label for="block_list-entries_options"><span class="lang-ids">op&ccedil;&atilde;o</span></label>
+                                                                                 <select id="block_list-entries_options" name="block_list-entries_options" class="block_options_combo">
+                                                                                    <option value=""></option>
+                                                                                 </select>
+                                                                                 <span class="add_global">
+                                                                                    <img src="./imgs/maiss2.jpg" title="adicionar op&ccedil;&atilde;o" alt="adicionar" />
+                                                                                 </span>
+                                                                                 <span class="remove_global">
+                                                                                    <img src="./imgs/menoss.jpg" title="remover op&ccedil;&atilde;o" alt="remover" />
+                                                                                 </span>
+                                                                                 <span class="edit_global">
+                                                                                    <img src="./imgs/lapis.jpg" title="editar op&ccedil;&atilde;o" alt="editar" />
+                                                                                 </span>
+                                                                              </div>
+                                                                              <fieldset class="global_config">
+                                                                                 <div class="item_set">
+                                                                                    <label><span class="lang-">nova</span></label>
+                                                                                    <input type="radio" value="entries_new_option" name="entries_options" class="choose_form" />
+                                                                                 </div>
+                                                                                 <div class="item_set">
+                                                                                    <label><span class="lang-">a partir de outra lista</span></label>
+                                                                                    <input type="radio" value="entries_from_lists" name="entries_options" class="choose_form" />
+                                                                                 </div>
+                                                                                 <div class="item_set">
+                                                                                    <label><span class="lang-">a partir do formato csv</span></label>
+                                                                                    <input type="radio" value="entries_from_csv" name="entries_options" class="choose_form" />
+                                                                                 </div>
+                                                                                 <div class="tochoose-entries_options" id="choose_form-entries_options-entries_new_option">
+                                                                                    <div id="block-entries_options-entries_new_option" class="simple_block ">
+                                                                                       <div class="title_bar">
+                                                                                          <div class="title_bar_text">nova</div>
+                                                                                          <div class="title_bar_display_content">
+                                                                                             <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                             <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <div id="settings-entries_options-entries_new_option" class="settings">
+                                                                                          <div class="item_set">
+                                                                                             <label for="label"><span class="lang-">etiqueta</span></label>
+                                                                                             <input type="text" name="label" id="label" value="" />
+                                                                                          </div>
+                                                                                          <div class="item_set">
+                                                                                             <label for="value"><span class="lang-">valor</span></label>
+                                                                                             <input type="text" name="value" id="value" value="" />
+                                                                                          </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div class="tochoose-entries_options" id="choose_form-entries_options-entries_from_lists">
+                                                                                    <div id="block-entries_options-entries_from_lists" class="simple_block ">
+                                                                                       <div class="title_bar">
+                                                                                          <div class="title_bar_text">a partir de outra lista</div>
+                                                                                          <div class="title_bar_display_content">
+                                                                                             <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                             <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <div id="settings-entries_options-entries_from_lists" class="settings">
+                                                                                          <div class="item_set">
+                                                                                             <label><span class="lang-">listas</span></label>
+                                                                                             <select name="entries_lists_available" id="entries_lists_available">
+                                                                                                <option value=""></option>
+                                                                                             </select>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div class="tochoose-entries_options" id="choose_form-entries_options-entries_from_csv">
+                                                                                    <div id="block-entries_options-entries_from_csv" class="simple_block ">
+                                                                                       <div class="title_bar">
+                                                                                          <div class="title_bar_text">a partir do formato csv</div>
+                                                                                          <div class="title_bar_display_content">
+                                                                                             <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                             <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                       <div id="settings-entries_options-entries_from_csv" class="settings">
+                                                                                          <div class="item_set">
+                                                                                             <label for="entries_options-entries_from_csv-text"><span class="lang-">texto</span></label>
+                                                                                             <textarea name="entries_options-entries_from_csv-text" id="entries_options-entries_from_csv-text" cols="25" rows="4"></textarea>
+                                                                                          </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div class="global_config_buttons">
+                                                                                    <input type="button" id="set-entries_options" class="adding_content_options" value="ok" />
+                                                                                    <input type="button" id="remove-entries_options" class="removing_global" value="remover" />
+                                                                                    <input type="button" id="cancel_content_options-entries_option" class="cancel_content_options" value="cancelar" />
+                                                                                 </div>
+                                                                              </fieldset>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div id="block-fill_standardized-rules" class="simple_block ">
+                                                                           <div class="title_bar">
+                                                                              <div class="title_bar_text">regras</div>
+                                                                              <div class="title_bar_display_content">
+                                                                                 <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                 <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div id="settings-fill_standardized-rules" class="settings">
+                                                                              <div class="item_set">
+                                                                                 <label for="entries_content-fill_standardized-rules-min_opt"><span class="lang-">m&iacute;nimo de op&ccedil;&otilde;es</span></label>
+                                                                                 <input type="text" name="entries_content-fill_standardized-rules-min_opt" id="entries_content-fill_standardized-rules-min_opt" value="" />
+                                                                              </div>
+                                                                              <div class="item_set">
+                                                                                 <label for="entries_content-fill_standardized-rules-max_opt"><span class="lang-">m&aacute;ximo de op&ccedil;&otilde;es</span></label>
+                                                                                 <input type="text" name="entries_content-fill_standardized-rules-max_opt" id="entries_content-fill_standardized-rules-max_opt" value="" />
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div id="block-fill_standardized-presentation" class="simple_block ">
+                                                                           <div class="title_bar">
+                                                                              <div class="title_bar_text">apresenta&ccedil;&atilde;o</div>
+                                                                              <div class="title_bar_display_content">
+                                                                                 <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                 <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div id="settings-fill_standardized-presentation" class="settings">
+                                                                              <div class="item_set">
+                                                                                 <label><span class="lang-">combo</span></label>
+                                                                                 <input type="radio" value="combo" name="entry_input_type" class="" />
+                                                                              </div>
+                                                                              <div class="item_set">
+                                                                                 <label><span class="lang-">lista de checagem</span></label>
+                                                                                 <input type="radio" value="checklist" name="entry_input_type" class="" />
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="tochoose-entries_content" id="choose_form-entries_content-fill_label">
+                                                                  <div id="block-fill_label" class="simple_block ">
+                                                                     <div class="title_bar">
+                                                                        <div class="title_bar_text">etiqueta</div>
+                                                                        <div class="title_bar_display_content">
+                                                                           <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                           <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div id="settings-fill_label" class="settings">
+                                                                        <div id="block-entries_content-fill_label-label" class="simple_block ">
+                                                                           <div class="title_bar">
+                                                                              <div class="title_bar_text">conte&uacute;do</div>
+                                                                              <div class="title_bar_display_content">
+                                                                                 <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                                                 <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div id="settings-entries_content-fill_label-label" class="settings">
+                                                                              <div class="item_set">
+                                                                                 <label for="entries_content-fill_label-text"><span class="lang-">texto</span></label>
+                                                                                 <textarea name="entries_content-fill_label-text" id="entries_content-fill_label-text" cols="20" rows="3"></textarea>
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="content_buttons">
+                                                                  <input type="button" id="set_content-entries" class="adding_content" value="ok" />
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </fieldset>
+                                                   </div>
+                                                </div>
+                                                <div id="block-element_type-question-the_answer-groupings" class="simple_block ">
+                                                      <div class="title_bar">
+                                                         <div class="title_bar_text">agrupamentos</div>
+                                                         <div class="title_bar_display_content">
+                                                            <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                            <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                         </div>
+                                                      </div>
+                                                   <div id="settings-element_type-question-the_answer-groupings" class="settings">
+                                                   </div>
+                                                </div>
+                                                <div id="block-element_type-question-the_answer-deps" class="simple_block ">
+                                                   <div class="title_bar">
+                                                      <div class="title_bar_text">depend&ecirc;ncias</div>
+                                                      <div class="title_bar_display_content">
+                                                         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                      </div>
+                                                   </div>
+                                                   <div id="settings-element_type-question-the_answer-deps" class="settings">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="content_buttons">
+                                    <input type="button" id="set_content-elements" class="adding_content" value="ok" />
+                                 </div>
+                              </div>
+                           </div>
+                        </fieldset>
+                     </div>
+                  </div>
+<!--fim bloco elementos      -->
+<!--início bloco ferramentas      -->
+                  <div id="block-tools" class="simple_block ">
+                     <div class="title_bar">
+                        <div class="title_bar_text">ferramentas</div>
+                        <div class="title_bar_display_content">
+                           <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                           <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                        </div>
+                     </div>
+                     <div id="settings-tools" class="settings">
+                        <div id="block-lists" class="block simple_block_style">
+                           <div class="title_bar">
+                              <div class="title_bar_text">listas</div>
+                              <div class="title_bar_display_content">
+                                 <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                 <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                              </div>
+                           </div>
+                           <div id="settings-lists" class="settings">
+                              <div class="settings_menu">
+                                 <label for="block_list-lists"><span class="lang-ids"></span></label>
+                                 <select id="block_list-lists" name="block_list-lists" class="block_combo">
+                                    <option value=""></option>
+                                 </select>
+                                 <span class="add_global">
+                                    <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                                 </span>
+                                 <span class="remove_global">
+                                    <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                                 </span>
+                                 <span class="edit_global">
+                                    <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                                 </span>
+                              </div>
+                              <fieldset class="global_config">
+                                 <div class="item_set">
+                                    <label for="lists_id"><span class="lang-">id</span></label>
+                                    <input type="text" name="lists_id" id="lists_id" value="" />
+                                 </div>
+                                 <div class="item_set">
+                                    <label for="lists_name"><span class="lang-">nome</span></label>
+                                    <input type="text" name="lists_name" id="lists_name" value="" />
+                                 </div>
+                                 <div class="global_config_buttons">
+                                    <input type="button" id="set-lists" class="adding_global" value="ok" />
+                                    <input type="button" id="remove-lists" class="removing_global" value="remover" />
+                                    <input type="button" id="cancel-lists" class="cancel_adding_global" value="cancelar" />
+                                 </div>
+                              </fieldset>
+                              <fieldset id="content_block-lists" class="content_fieldset">
+                                 <div id="block-lists_options" class="block simple_block_style">
+                                    <div class="title_bar">
+                                       <div class="title_bar_text">op&ccedil;&otilde;es</div>
+                                       <div class="title_bar_display_content">
+                                          <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                          <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                       </div>
+                                    </div>
+                                    <div id="settings-lists_options" class="settings">
+                                       <div class="settings_menu">
+                                          <label for="block_list-lists_options"><span class="lang-ids">op&ccedil;&atilde;o</span></label>
+                                          <select id="block_list-lists_options" name="block_list-lists_options" class="block_options_combo">
+                                             <option value=""></option>
+                                          </select>
+                                          <span class="add_global">
+                                             <img src="./imgs/maiss2.jpg" title="adicionar op&ccedil;&atilde;o" alt="adicionar" />
+                                          </span>
+                                          <span class="remove_global">
+                                             <img src="./imgs/menoss.jpg" title="remover op&ccedil;&atilde;o" alt="remover" />
+                                          </span>
+                                          <span class="edit_global">
+                                             <img src="./imgs/lapis.jpg" title="editar op&ccedil;&atilde;o" alt="editar" />
+                                          </span>
+                                       </div>
+                                       <fieldset class="global_config">
+                                          <div class="item_set">
+                                             <label><span class="lang-">nova</span></label>
+                                             <input type="radio" value="new_option" name="lists_options" class="choose_form" />
+                                          </div>
+                                          <div class="item_set">
+                                             <label><span class="lang-">a partir de outra lista</span></label>
+                                             <input type="radio" value="from_lists" name="lists_options" class="choose_form" />
+                                          </div>
+                                          <div class="item_set">
+                                             <label><span class="lang-">a partir do formato csv</span></label>
+                                             <input type="radio" value="from_csv" name="lists_options" class="choose_form" />
+                                          </div>
+                                          <div class="tochoose-lists_options" id="choose_form-lists_options-new_option">
+                                             <div id="block-lists_options-new" class="simple_block ">
+                                                <div class="title_bar">
+                                                   <div class="title_bar_text">nova</div>
+                                                   <div class="title_bar_display_content">
+                                                      <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                      <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                   </div>
+                                                </div>
+                                                <div id="settings-lists_options-new" class="settings">
+                                                   <div class="item_set">
+                                                      <label for="lists_options_label"><span class="lang-">etiqueta</span></label>
+                                                      <input type="text" name="lists_options_label" id="lists_options_label" value="" />
+                                                   </div>
+                                                   <div class="item_set">
+                                                      <label for="lists_options_value"><span class="lang-">valor</span></label>
+                                                      <input type="text" name="lists_options_value" id="lists_options_value" value="" />
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="tochoose-lists_options" id="choose_form-lists_options-from_lists">
+                                             <div id="block-lists_options-from_lists" class="simple_block ">
+                                                <div class="title_bar">
+                                                   <div class="title_bar_text">a partir de outra lista</div>
+                                                   <div class="title_bar_display_content">
+                                                      <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                      <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                   </div>
+                                                </div>
+                                                <div id="settings-lists_options-from_lists" class="settings">
+                                                   <div class="item_set">
+                                                      <label><span class="lang-">listas</span></label>
+                                                      <select name="lists_available" id="lists_available">
+                                                         <option value=""></option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="tochoose-lists_options" id="choose_form-lists_options-from_csv">
+                                             <div id="block-lists_options-from_csv" class="simple_block ">
+                                                <div class="title_bar">
+                                                   <div class="title_bar_text">a partir do formato csv</div>
+                                                   <div class="title_bar_display_content">
+                                                      <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                                                      <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                                                   </div>
+                                                </div>
+                                                <div id="settings-lists_options-from_csv" class="settings">
+                                                   <div class="item_set">
+                                                      <label for="lists_options-from_csv-text"><span class="lang-">texto</span></label>
+                                                      <textarea name="lists_options-from_csv-text" id="lists_options-from_csv-text" cols="25" rows="4"></textarea>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="global_config_buttons">
+                                             <input type="button" id="set-lists_options" class="adding_content_options" value="ok" />
+                                             <input type="button" id="remove-lists_options" class="removing_global" value="remover" />
+                                             <input type="button" id="cancel_content_options-option" class="cancel_content_options" value="cancelar" />
+                                          </div>
+                                       </fieldset>
+                                    </div>
+                                 </div>
+                              </fieldset>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+<!--início bloco ferramentas      -->
+<!--início bloco layouts      -->
+                  <div id="block-layouts" class="block ">
+                     <div class="title_bar">
+                        <div class="title_bar_text">layouts</div>
+                        <div class="title_bar_display_content">
+                           <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                           <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                        </div>
+                     </div>
+                     <div id="settings-layouts" class="settings">
+                        <div class="settings_menu">
+                           <label for="block_list-layouts"><span class="lang-ids"></span></label>
+                           <select id="block_list-layouts" name="block_list-layouts" class="block_combo">
+                              <option value=""></option>
+                           </select>
+                           <span class="add_global">
+                              <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                           </span>
+                           <span class="remove_global">
+                              <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                           </span>
+                           <span class="edit_global">
+                              <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                           </span>
+                        </div>
+                        <fieldset class="global_config">
+                           <div class="item_set">
+                              <label for="layouts_id"><span class="lang-">id</span></label>
+                              <input type="text" name="layouts_id" id="layouts_id" value="" />
+                           </div>
+                           <div class="item_set">
+                              <label for="layouts_name"><span class="lang-">nome</span></label>
+                              <input type="text" name="layouts_name" id="layouts_name" value="" />
+                           </div>
+                           <div class="global_config_buttons">
+                              <input type="button" id="set-layouts" class="adding_global" value="ok" />
+                              <input type="button" id="remove-layouts" class="removing_global" value="remover" />
+                              <input type="button" id="cancel-layouts" class="cancel_adding_global" value="cancelar" />
+                           </div>
+                        </fieldset>
+                        <fieldset id="content_block-layouts" class="content_fieldset">
+                        </fieldset>
+                     </div>
+                  </div>
+<!--fim bloco layouts      -->
+<!--início bloco agrupamentos      -->
+                  <div id="block-groupings" class="block ">
+                     <div class="title_bar">
+                        <div class="title_bar_text">agrupamentos</div>
+                        <div class="title_bar_display_content">
+                           <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                           <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                        </div>
+                     </div>
+                     <div id="settings-groupings" class="settings">
+                        <div class="settings_menu">
+                           <label for="block_list-groupings"><span class="lang-ids"></span></label>
+                           <select id="block_list-groupings" name="block_list-groupings" class="block_combo">
+                              <option value=""></option>
+                           </select>
+                           <span class="add_global">
+                              <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                           </span>
+                           <span class="remove_global">
+                              <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                           </span>
+                           <span class="edit_global">
+                              <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                           </span>
+                        </div>
+                        <fieldset class="global_config">
+                           <div class="item_set">
+                              <label for="groupings_id"><span class="lang-">id</span></label>
+                              <input type="text" name="groupings_id" id="groupings_id" value="" />
+                           </div>
+                           <div class="item_set">
+                              <label for="groupings_name"><span class="lang-">nome</span></label>
+                              <input type="text" name="groupings_name" id="groupings_name" value="" />
+                           </div>
+                           <div class="global_config_buttons">
+                              <input type="button" id="set-groupings" class="adding_global" value="ok" />
+                              <input type="button" id="remove-groupings" class="removing_global" value="remover" />
+                              <input type="button" id="cancel-groupings" class="cancel_adding_global" value="cancelar" />
+                           </div>
+                        </fieldset>
+                        <fieldset id="content_block-groupings" class="content_fieldset">
+                        </fieldset>
+                     </div>
+                  </div>
+<!--fim bloco agrupamentos      -->
+<!--início bloco dependências      -->
+                  <div id="block-deps" class="block ">
+                     <div class="title_bar">
+                        <div class="title_bar_text">depend&ecirc;ncias</div>
+                        <div class="title_bar_display_content">
+                           <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
+                           <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
+                        </div>
+                     </div>
+                     <div id="settings-deps" class="settings">
+                        <div class="settings_menu">
+                           <label for="block_list-deps"><span class="lang-ids"></span></label>
+                           <select id="block_list-deps" name="block_list-deps" class="block_combo">
+                              <option value=""></option>
+                           </select>
+                           <span class="add_global">
+                              <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
+                           </span>
+                           <span class="remove_global">
+                              <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
+                           </span>
+                           <span class="edit_global">
+                              <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
+                           </span>
+                        </div>
+                        <fieldset class="global_config">
+                           <div class="item_set">
+                              <label for="deps_id"><span class="lang-">id</span></label>
+                              <input type="text" name="deps_id" id="deps_id" value="" />
+                           </div>
+                           <div class="item_set">
+                              <label for="deps_name"><span class="lang-">nome</span></label>
+                              <input type="text" name="deps_name" id="deps_name" value="" />
+                           </div>
+                           <div class="global_config_buttons">
+                              <input type="button" id="set-deps" class="adding_global" value="ok" />
+                              <input type="button" id="remove-deps" class="removing_global" value="remover" />
+                              <input type="button" id="cancel-deps" class="cancel_adding_global" value="cancelar" />
+                           </div>
+                        </fieldset>
+                        <fieldset id="content_block-deps" class="content_fieldset">
+                        </fieldset>
+                     </div>
+                  </div>
+<!--fim bloco dependências      -->
+               </fieldset>
+            </div>
          </div>
-         <div class="item_set">
-            <label for="quiz_name"><span class="lang-">nome</span></label>
-            <input type="text" name="quiz_name" id="quiz_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-quiz" class="adding_global" value="ok" />
-            <input type="button" id="cancel-quiz" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-quiz" class="content_fieldset">
-         <div id="block-elements" class="block ">
-   <div class="title_bar">
-      <div class="title_bar_text">elementos</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-elements" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-elements"><span class="lang-ids"></span></label>
-         <select id="block_list-elements" name="block_list-elements" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="elements_id"><span class="lang-">id</span></label>
-            <input type="text" name="elements_id" id="elements_id" value="" />
-         </div>
-         <div class="item_set">
-            <label for="elements_name"><span class="lang-">nome</span></label>
-            <input type="text" name="elements_name" id="elements_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-elements" class="adding_global" value="ok" />
-            <input type="button" id="cancel-elements" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-elements" class="content_fieldset">
-         <div id="block-el_type" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">tipo</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-el_type" class="settings">
-      <div class="item_set">
-   <label><span class="lang-">html</span></label>
-   <input type="radio" value="html" name="element_type" class="choose_form" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">quest&atilde;o</span></label>
-   <input type="radio" value="question" name="element_type" class="choose_form" />
-</div>
-<div class="tochoose-element_type" id="choose_form-element_type-html">
-   <div id="block-element_type-html" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">html</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-html" class="settings">
-      <div id="block-element_type-html-content" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">conte&uacute;do</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-html-content" class="settings">
-      <div class="item_set">
-   <label for="el_type_html_content_text"><span class="lang-">texto</span></label>
-   <textarea name="el_type_html_content_text" id="el_type_html_content_text" cols="20" rows="3"></textarea>
-</div>
-
-   </div>
-</div>
-   </div>
-</div>
-</div><div class="tochoose-element_type" id="choose_form-element_type-question">
-   <div id="block-element_type-question" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">quest&atilde;o</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-question" class="settings">
-      <div id="block-element_type-question-answer_text" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">dados do enunciado</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-question-answer_text" class="settings">
-      <div class="item_set">
-   <label for="question_num"><span class="lang-">marcador</span></label>
-   <input type="text" name="question_num" id="question_num" value="" />
-</div><div class="item_set">
-   <label for="question_text"><span class="lang-">texto</span></label>
-   <textarea name="question_text" id="question_text" cols="20" rows="3"></textarea>
-</div>
-
-   </div>
-</div><div id="block-element_type-question-the_answer" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">resposta</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-question-the_answer" class="settings">
-      <div id="block-entries" class="block simple_block_style">
-   <div class="title_bar">
-      <div class="title_bar_text">entradas</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-entries"><span class="lang-ids"></span></label>
-         <select id="block_list-entries" name="block_list-entries" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="entries_id"><span class="lang-">id</span></label>
-            <input type="text" name="entries_id" id="entries_id" value="" />
-         </div>
-         <div class="item_set">
-            <label for="entries_name"><span class="lang-">nome</span></label>
-            <input type="text" name="entries_name" id="entries_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-entries" class="adding_global" value="ok" />
-            <input type="button" id="cancel-entries" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-entries" class="content_fieldset">
-         <div id="block-entries_content" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">conte&uacute;do</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_content" class="settings">
-      <div class="item_set">
-   <label><span class="lang-">preenchimento livre</span></label>
-   <input type="radio" value="fill_free" name="entries_content" class="choose_form" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">preenchimento padronizado</span></label>
-   <input type="radio" value="fill_standardized" name="entries_content" class="choose_form" />
-</div>
-<div class="tochoose-entries_content" id="choose_form-entries_content-fill_free">
-   <div id="block-fill_free" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">livre</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-fill_free" class="settings">
-      <div id="block-entries_content-fill_free-rules" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">regras</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_content-fill_free-rules" class="settings">
-      <div class="item_set">
-   <label for="entries_content-fill_free-rules-content"><span class="lang-">regras</span></label>
-   <select name="entries_content-fill_free-rules-content" id="entries_content-fill_free-rules-content">
-      <option value=""></option>
-      <option value="rules-allows_all_char">qualquer caracter</option>
-      <option value="rules-allows_letters_pont_char">letras e pontua&ccedil;&atilde;o</option>
-      <option value="rules-allows_num_char">n&uacute;meros</option>
-      <option value="rules-allows_num_char">data</option>
-   </select>
-</div><div class="item_set">
-   <label for="entries_content-fill_free-rules-min_char"><span class="lang-">m&iacute;nimo de caracteres</span></label>
-   <input type="text" name="entries_content-fill_free-rules-min_char" id="entries_content-fill_free-rules-min_char" value="" />
-</div><div class="item_set">
-   <label for="entries_content-fill_free-rules-max_char"><span class="lang-">m&aacute;ximo de caracteres</span></label>
-   <input type="text" name="entries_content-fill_free-rules-max_char" id="entries_content-fill_free-rules-max_char" value="" />
-</div>
-   </div>
-</div><div id="block-entries_content-fill_free-presentation" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">apresenta&ccedil;&atilde;o</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_content-fill_free-presentation" class="settings">
-      <div class="item_set">
-   <label><span class="lang-">campo texto</span></label>
-   <input type="radio" value="text" name="entry_input_type" class="" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">campo &aacute;rea de texto</span></label>
-   <input type="radio" value="textarea" name="entry_input_type" class="" />
-</div>
-
-   </div>
-</div>
-   </div>
-</div>
-</div><div class="tochoose-entries_content" id="choose_form-entries_content-fill_standardized">
-   <div id="block-fill_standardized" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">padronizado</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-fill_standardized" class="settings">
-      <div id="block-entries_options" class="block simple_block_style">
-   <div class="title_bar">
-      <div class="title_bar_text">op&ccedil;&otilde;es</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_options" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-entries_options"><span class="lang-ids">op&ccedil;&atilde;o</span></label>
-         <select id="block_list-entries_options" name="block_list-entries_options" class="block_options_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar op&ccedil;&atilde;o" alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover op&ccedil;&atilde;o" alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar op&ccedil;&atilde;o" alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-   <label><span class="lang-">nova</span></label>
-   <input type="radio" value="entries_new_option" name="entries_options" class="choose_form" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">a partir de outra lista</span></label>
-   <input type="radio" value="entries_from_lists" name="entries_options" class="choose_form" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">a partir do formato csv</span></label>
-   <input type="radio" value="entries_from_csv" name="entries_options" class="choose_form" />
-</div>
-<div class="tochoose-entries_options" id="choose_form-entries_options-entries_new_option">
-   <div id="block-entries_options-entries_new_option" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">nova</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_options-entries_new_option" class="settings">
-      <div class="item_set">
-   <label for="label"><span class="lang-">etiqueta</span></label>
-   <input type="text" name="label" id="label" value="" />
-</div><div class="item_set">
-   <label for="value"><span class="lang-">valor</span></label>
-   <input type="text" name="value" id="value" value="" />
-</div>
-   </div>
-</div>
-</div><div class="tochoose-entries_options" id="choose_form-entries_options-entries_from_lists">
-   <div id="block-entries_options-entries_from_lists" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">a partir de outra lista</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_options-entries_from_lists" class="settings">
-      <div class="item_set">
-   <label><span class="lang-">listas</span></label>
-   <select name="entries_lists_available" id="entries_lists_available">
-      <option value=""></option>
-   </select>
-</div>
-   </div>
-</div>
-</div><div class="tochoose-entries_options" id="choose_form-entries_options-entries_from_csv">
-   <div id="block-entries_options-entries_from_csv" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">a partir do formato csv</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-entries_options-entries_from_csv" class="settings">
-      <div class="item_set">
-   <label for="entries_options-entries_from_csv-text"><span class="lang-">texto</span></label>
-   <textarea name="entries_options-entries_from_csv-text" id="entries_options-entries_from_csv-text" cols="25" rows="4"></textarea>
-</div>
-
-   </div>
-</div>
-</div><div class="content_buttons">
-   <input type="button" id="set_content_options-entries_option" class="adding_content_options" value="ok" />
-   <input type="button" id="cancel_content_options-entries_option" class="cancel_content_options" value="cancelar" />
-</div>
-      </fieldset>
-
-   </div>
-</div><div id="block-fill_standardized-rules" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">regras</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-fill_standardized-rules" class="settings">
-      <div class="item_set">
-   <label for="entries_content-fill_standardized-rules-min_opt"><span class="lang-">m&iacute;nimo de op&ccedil;&otilde;es</span></label>
-   <input type="text" name="entries_content-fill_standardized-rules-min_opt" id="entries_content-fill_standardized-rules-min_opt" value="" />
-</div><div class="item_set">
-   <label for="entries_content-fill_standardized-rules-max_opt"><span class="lang-">m&aacute;ximo de op&ccedil;&otilde;es</span></label>
-   <input type="text" name="entries_content-fill_standardized-rules-max_opt" id="entries_content-fill_standardized-rules-max_opt" value="" />
-</div>
-   </div>
-</div><div id="block-fill_standardized-presentation" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">apresenta&ccedil;&atilde;o</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-fill_standardized-presentation" class="settings">
-      <div class="item_set">
-   <label><span class="lang-">combo</span></label>
-   <input type="radio" value="combo" name="entry_input_type" class="" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">lista de checagem</span></label>
-   <input type="radio" value="checklist" name="entry_input_type" class="" />
-</div>
-
-   </div>
-</div>
-   </div>
-</div>
-</div><div class="content_buttons">
-   <input type="button" id="set_content-entries" class="adding_content" value="ok" />
-</div>
-   </div>
-</div>
-      </fieldset>
-   </div>
-</div><div id="block-element_type-question-the_answer-groupings" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">agrupamentos</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-question-the_answer-groupings" class="settings">
-      
-   </div>
-</div><div id="block-element_type-question-the_answer-deps" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">depend&ecirc;ncias</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-element_type-question-the_answer-deps" class="settings">
-      
-   </div>
-</div>
-   </div>
-</div>
-   </div>
-</div>
-</div><div class="content_buttons">
-   <input type="button" id="set_content-elements" class="adding_content" value="ok" />
-</div>
-   </div>
-</div>
-      </fieldset>
-   </div>
-</div><div id="block-tools" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">ferramentas</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-tools" class="settings">
-      <div id="block-lists" class="block simple_block_style">
-   <div class="title_bar">
-      <div class="title_bar_text">listas</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-lists" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-lists"><span class="lang-ids"></span></label>
-         <select id="block_list-lists" name="block_list-lists" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="lists_id"><span class="lang-">id</span></label>
-            <input type="text" name="lists_id" id="lists_id" value="" />
-         </div>
-         <div class="item_set">
-            <label for="lists_name"><span class="lang-">nome</span></label>
-            <input type="text" name="lists_name" id="lists_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-lists" class="adding_global" value="ok" />
-            <input type="button" id="cancel-lists" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-lists" class="content_fieldset">
-         <div id="block-lists_options" class="block simple_block_style">
-   <div class="title_bar">
-      <div class="title_bar_text">op&ccedil;&otilde;es</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-lists_options" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-lists_options"><span class="lang-ids">op&ccedil;&atilde;o</span></label>
-         <select id="block_list-lists_options" name="block_list-lists_options" class="block_options_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar op&ccedil;&atilde;o" alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover op&ccedil;&atilde;o" alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar op&ccedil;&atilde;o" alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-   <label><span class="lang-">nova</span></label>
-   <input type="radio" value="new_option" name="lists_options" class="choose_form" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">a partir de outra lista</span></label>
-   <input type="radio" value="from_lists" name="lists_options" class="choose_form" />
-</div>
-<div class="item_set">
-   <label><span class="lang-">a partir do formato csv</span></label>
-   <input type="radio" value="from_csv" name="lists_options" class="choose_form" />
-</div>
-<div class="tochoose-lists_options" id="choose_form-lists_options-new_option">
-   <div id="block-lists_options-new" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">nova</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-lists_options-new" class="settings">
-      <div class="item_set">
-   <label for="lists_options_label"><span class="lang-">etiqueta</span></label>
-   <input type="text" name="lists_options_label" id="lists_options_label" value="" />
-</div><div class="item_set">
-   <label for="lists_options_value"><span class="lang-">valor</span></label>
-   <input type="text" name="lists_options_value" id="lists_options_value" value="" />
-</div>
-   </div>
-</div>
-</div><div class="tochoose-lists_options" id="choose_form-lists_options-from_lists">
-   <div id="block-lists_options-from_lists" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">a partir de outra lista</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-lists_options-from_lists" class="settings">
-      <div class="item_set">
-   <label><span class="lang-">listas</span></label>
-   <select name="lists_available" id="lists_available">
-      <option value=""></option>
-   </select>
-</div>
-   </div>
-</div>
-</div><div class="tochoose-lists_options" id="choose_form-lists_options-from_csv">
-   <div id="block-lists_options-from_csv" class="simple_block ">
-   <div class="title_bar">
-      <div class="title_bar_text">a partir do formato csv</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-lists_options-from_csv" class="settings">
-      <div class="item_set">
-   <label for="lists_options-from_csv-text"><span class="lang-">texto</span></label>
-   <textarea name="lists_options-from_csv-text" id="lists_options-from_csv-text" cols="25" rows="4"></textarea>
-</div>
-
-   </div>
-</div>
-</div><div class="content_buttons">
-   <input type="button" id="set_content_options-option" class="adding_content_options" value="ok" />
-   <input type="button" id="cancel_content_options-option" class="cancel_content_options" value="cancelar" />
-</div>
-      </fieldset>
-
-   </div>
-</div>
-      </fieldset>
-   </div>
-</div>
-   </div>
-</div><div id="block-layouts" class="block ">
-   <div class="title_bar">
-      <div class="title_bar_text">layouts</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-layouts" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-layouts"><span class="lang-ids"></span></label>
-         <select id="block_list-layouts" name="block_list-layouts" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="layouts_id"><span class="lang-">id</span></label>
-            <input type="text" name="layouts_id" id="layouts_id" value="" />
-         </div>
-         <div class="item_set">
-            <label for="layouts_name"><span class="lang-">nome</span></label>
-            <input type="text" name="layouts_name" id="layouts_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-layouts" class="adding_global" value="ok" />
-            <input type="button" id="cancel-layouts" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-layouts" class="content_fieldset">
-         
-      </fieldset>
-   </div>
-</div><div id="block-groupings" class="block ">
-   <div class="title_bar">
-      <div class="title_bar_text">agrupamentos</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-groupings" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-groupings"><span class="lang-ids"></span></label>
-         <select id="block_list-groupings" name="block_list-groupings" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="groupings_id"><span class="lang-">id</span></label>
-            <input type="text" name="groupings_id" id="groupings_id" value="" />
-         </div>
-         <div class="item_set">
-            <label for="groupings_name"><span class="lang-">nome</span></label>
-            <input type="text" name="groupings_name" id="groupings_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-groupings" class="adding_global" value="ok" />
-            <input type="button" id="cancel-groupings" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-groupings" class="content_fieldset">
-         
-      </fieldset>
-   </div>
-</div><div id="block-deps" class="block ">
-   <div class="title_bar">
-      <div class="title_bar_text">depend&ecirc;ncias</div>
-      <div class="title_bar_display_content">
-         <span class="open_settings"><img src="./imgs/maiss2.jpg" title="exibir" alt="exibir" /></span>
-         <span class="close_settings"><img src="./imgs/menoss.jpg" title="esconder" alt="esconder" /></span>
-      </div>
-   </div>
-   <div id="settings-deps" class="settings">
-      <div class="settings_menu">
-         <label for="block_list-deps"><span class="lang-ids"></span></label>
-         <select id="block_list-deps" name="block_list-deps" class="block_combo">
-            <option value=""></option>
-         </select>
-         <span class="add_global">
-            <img src="./imgs/maiss2.jpg" title="adicionar " alt="adicionar" />
-         </span>
-         <span class="remove_global">
-            <img src="./imgs/menoss.jpg" title="remover " alt="remover" />
-         </span>
-         <span class="edit_global">
-            <img src="./imgs/lapis.jpg" title="editar " alt="editar" />
-         </span>
-      </div>
-      <fieldset class="global_config">
-         <div class="item_set">
-            <label for="deps_id"><span class="lang-">id</span></label>
-            <input type="text" name="deps_id" id="deps_id" value="" />
-         </div>
-         <div class="item_set">
-            <label for="deps_name"><span class="lang-">nome</span></label>
-            <input type="text" name="deps_name" id="deps_name" value="" />
-         </div>
-         <div class="global_config_buttons">
-            <input type="button" id="set-deps" class="adding_global" value="ok" />
-            <input type="button" id="cancel-deps" class="cancel_adding_global" value="cancelar" />
-         </div>
-      </fieldset>
-      <fieldset id="content_block-deps" class="content_fieldset">
-         
-      </fieldset>
-   </div>
-</div>
-      </fieldset>
-   </div>
-</div>
+<!--fim bloco quiz      -->
       </div>
       <div id="quiz_wrapper">
       </div>
