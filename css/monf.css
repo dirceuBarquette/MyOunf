@@ -153,6 +153,41 @@ div[class^=tochoose] {
 }
 /*tochoose*/
 
+/*myounf alert*/
+.myounf-alert {
+   display:none;
+   position:fixed;
+   top:30px;
+   left:150px;
+   width:200px;
+   height:80px;
+   z-index:10;
+   background-color:#E9E8E8;
+}
+.myounf-alert-title {
+   color:#A50900;
+   font-weight:bold;
+   width:100%;
+   height:15px;
+   border-bottom: medium double;
+   text-align:center;
+}
+.myounf-alert-content {
+   width:100%;
+   height:35px;
+   padding:5px 0 0 5px;
+   font-weight:bold;
+}
+.myounf-alert-buttons {
+   width:100%;
+   height:22px;
+   padding-left:5px;
+}
+.myounf-alert-bg {
+   background-color:#999999;
+}
+/*myounf alert*/
+
 .disp_block {
    display:block;
 }
